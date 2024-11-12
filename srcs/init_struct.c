@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 16:31:19 by ahadj-ar         ###   ########.fr       */
+/*   Created: 2024/11/12 16:29:45 by ahadj-ar          #+#    #+#             */
+/*   Updated: 2024/11/12 16:31:56 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	main(int ac, char **av)
+void	init_data(t_data *data)
 {
-	t_cube	cube;
-	t_data	data;
-
-	if (ac != 2)
-	{
-		printf("Wrong arguments\n");
-		return (1);
-	}
-	else
-	{
-		cube.data = &data;
-		init_data(&data);
-		if (parsing(av, &cube))
-			return (1);
-	}
-	cleanup(&cube);
+	data->EA_img = NULL;
+	data->NO_img = NULL;
+	data->WE_img = NULL;
+	data->SO_img = NULL;
+	data->floor_color = NULL;
+	data->roof_color = NULL;
 }

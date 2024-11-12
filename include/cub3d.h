@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 16:14:11 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:35:19 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,44 @@
 #  define BUFFER_SIZE 1
 # endif
 
+typedef struct s_data
+{
+	char			*NO_img;
+	char			*SO_img;
+	char			*WE_img;
+	char			*EA_img;
+	char			*floor_color;
+	char			*roof_color;
+}					t_data;
+
 typedef struct s_cube
 {
-	char	**map;
-}			t_cube;
+	char			**map;
+	struct s_data	*data;
+}					t_cube;
 
 // PARSING
 
-int			parsing(char **av, t_cube *cube);
-int			get_map(char *str, t_cube *cube);
-int			get_line_length(char *str, int i);
+int					parsing(char **av, t_cube *cube);
+int					get_map(char *str, t_cube *cube);
+int					get_line_length(char *str, int i);
+void				get_data(t_cube *cube);
+
+// INIT
+
+void				init_data(t_data *data);
 
 // TOOLS
-int			ft_strlen(char *str);
-void		*ft_calloc(size_t nmemb, size_t size);
-char		*ft_strdup(char *str);
-char		*ft_strndup(const char *s, int n);
-char		*ft_strjoin(char *s1, char *s2);
+
+int					ft_strlen(char *str);
+void				*ft_calloc(size_t nmemb, size_t size);
+char				*ft_strdup(char *str);
+char				*ft_strndup(const char *s, int n);
+char				*ft_strjoin(char *s1, char *s2);
 
 // CLEANUP AND ERRORS
-void		cleanup(t_cube *cube);
-void		free_tab(char **tab);
+
+void				cleanup(t_cube *cube);
+void				free_tab(char **tab);
+
 #endif
