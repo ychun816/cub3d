@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:29:45 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 17:26:36 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:05:07 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	init_data(t_data *data)
 {
-	data->EA_img = NULL;
-	data->NO_img = NULL;
-	data->WE_img = NULL;
-	data->SO_img = NULL;
-	data->F_color = NULL;
-	data->C_color = NULL;
+	data->east_img = NULL;
+	data->north_img = NULL;
+	data->west_img = NULL;
+	data->south_img = NULL;
+	data->f_color = NULL;
+	data->c_color = NULL;
 }

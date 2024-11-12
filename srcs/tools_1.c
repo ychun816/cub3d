@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:43:22 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 17:59:38 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:04:32 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ char	*ft_strjoin(char *s1, char *s2)
 
 int	ft_atoi(const char *str)
 {
-	int i;
-	int res;
-	int sign;
+	int	i;
+	int	res;
+	int	sign;
 
 	sign = 1;
 	res = 0;

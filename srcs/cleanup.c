@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:31:32 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 17:27:02 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:06:19 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ void	free_tab(char **tab)
 
 void	free_data(t_data *data)
 {
-	if (data->EA_img)
-		free(data->EA_img);
-	if (data->WE_img)
-		free(data->WE_img);
-	if (data->SO_img)
-		free(data->SO_img);
-	if (data->NO_img)
-		free(data->NO_img);
-	if (data->C_color)
-		free(data->C_color);
-	if (data->F_color)
-		free(data->F_color);
+	if (data->east_img)
+		free(data->east_img);
+	if (data->west_img)
+		free(data->west_img);
+	if (data->south_img)
+		free(data->south_img);
+	if (data->north_img)
+		free(data->north_img);
+	if (data->c_color)
+		free(data->c_color);
+	if (data->f_color)
+		free(data->f_color);
 }
 
 void	cleanup(t_cube *cube)

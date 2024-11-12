@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:28:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 17:09:08 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:15:39 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,54 +26,13 @@ int	check_extension(char *av)
 
 int	check_elements(char **map)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == '1' || map[i][j] == '0' || map[i][j] == 'N'
-				|| map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W')
-			{
-				j++;
-			}
-			else
-				return (1);
-		}
-		i++;
-	}
+	(void)map;
 	return (0);
 }
 
 int	check_walls(char **map)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map[0][i])
-	{
-		if (map[0][i] != '1')
-			return (1);
-		i++;
-	}
-	i = 0;
-	while (map[i])
-	{
-		if (map[i][0] != '1' || map[i][ft_strlen(map[i]) - 1] != '1')
-			return (1);
-		i++;
-	}
-	i--;
-	j = -1;
-	while (map[i][++j])
-	{
-		if (map[i][j] != '1')
-			return (1);
-	}
+	(void)map;
 	return (0);
 }
 
@@ -89,7 +48,8 @@ int	parsing(char **av, t_cube *cube)
 		printf("Invalid map\n");
 		return (1);
 	}
-	get_data(cube);
+	if (get_data(cube))
+		return (1);
 	// if (check_elements(cube->map))
 	// {
 	// 	printf("Invalid map : wrong elements\n");

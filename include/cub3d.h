@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 17:59:48 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:02:21 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@
 
 typedef struct s_data
 {
-	char			*NO_img;
-	char			*SO_img;
-	char			*WE_img;
-	char			*EA_img;
-	char			*F_color;
-	char			*C_color;
+	char			*north_img;
+	char			*south_img;
+	char			*west_img;
+	char			*east_img;
+	char			*f_color;
+	char			*c_color;
 }					t_data;
 
 typedef struct s_cube

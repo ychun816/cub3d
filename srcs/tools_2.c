@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:24:02 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 17:42:47 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:04:40 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_strtrim(char *str, char c)
 
 void	ft_strrtrim(char *str, char c)
 {
-	int i;
+	int	i;
 
 	i = ft_strlen(str) - 1;
 	while (i >= 0)
