@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 15:54:28 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:00:05 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ int	main(int ac, char **av)
 	else
 	{
 		if (parsing(av, &cube))
-		{
-			printf("Wrong map\n");
 			return (1);
-		}
-		cleanup(&cube);
 	}
+	cleanup(&cube);
 }

@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 15:54:06 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:14:11 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int			get_map(char *str, t_cube *cube);
 int			get_line_length(char *str, int i);
 
 // TOOLS
+int			ft_strlen(char *str);
 void		*ft_calloc(size_t nmemb, size_t size);
 char		*ft_strdup(char *str);
 char		*ft_strndup(const char *s, int n);

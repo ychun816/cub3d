@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:15:09 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 15:54:56 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:11:15 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	stock_map(char *str, t_cube *cube, int count_nl)
 			i++;
 		}
 	}
+	cube->map[len]= NULL;
 }
 
 int	get_map(char *str, t_cube *cube)
@@ -98,7 +99,6 @@ int	get_map(char *str, t_cube *cube)
 	int		count_nl;
 	char	*string;
 
-	printf("%s\n", str);
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
 		return (1);
