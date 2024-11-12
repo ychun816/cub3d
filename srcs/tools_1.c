@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:43:22 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 15:54:42 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:59:38 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,43 +43,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (tab);
 }
 
-char	*ft_strdup(char *str)
-{
-	char	*dest;
-	int		i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	dest = ft_calloc(sizeof(char), i + 1);
-	i = 0;
-	while (str[i])
-	{
-		dest[i] = str[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	*ft_strndup(const char *s, int n)
-{
-	int		i;
-	char	*dest;
-
-	dest = malloc(sizeof(char) * (n + 1));
-	if (!dest)
-		return (NULL);
-	i = 0;
-	while (s[i] && i <= n)
-	{
-		dest[i] = s[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
 char	*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
@@ -107,4 +70,33 @@ char	*ft_strjoin(char *s1, char *s2)
 	free(s1);
 	ptr[i] = '\0';
 	return (ptr);
+}
+
+int	ft_atoi(const char *str)
+{
+	int i;
+	int res;
+	int sign;
+
+	sign = 1;
+	res = 0;
+	i = 0;
+	while ((str[i] == ' ') || (str[i] >= 9 && str[i] <= 13))
+	{
+		i++;
+	}
+	if ((str[i] == '+' || str[i] == '-') && str[i] != '\0')
+	{
+		if (str[i] == '-')
+		{
+			sign = -1;
+		}
+		i++;
+	}
+	while ((str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
+	{
+		res = res * 10 + (str[i] - '0');
+		i++;
+	}
+	return (res * sign);
 }

@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:28:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 16:35:46 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:09:08 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,15 +90,15 @@ int	parsing(char **av, t_cube *cube)
 		return (1);
 	}
 	get_data(cube);
-	if (check_elements(cube->map))
-	{
-		printf("Invalid map : wrong elements\n");
-		return (1);
-	}
-	if (check_walls(cube->map))
-	{
-		printf("Invalid map : map is not closed\n");
-		return (1);
-	}
+	// if (check_elements(cube->map))
+	// {
+	// 	printf("Invalid map : wrong elements\n");
+	// 	return (1);
+	// }
+	// if (check_walls(cube->map))
+	// {
+	// 	printf("Invalid map : map is not closed\n");
+	// 	return (1);
+	// }
 	return (0);
 }
