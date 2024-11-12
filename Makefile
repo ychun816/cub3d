@@ -6,7 +6,7 @@
 #    By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:25:13 by ahadj-ar          #+#    #+#              #
-#    Updated: 2024/11/12 14:26:09 by ahadj-ar         ###   ########.fr        #
+#    Updated: 2024/11/12 15:33:07 by ahadj-ar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,15 +16,21 @@ NAME	= cub3d
 
 ### SOURCES	###
 
-FILES	=	srcs/main.c
+FILES	=	srcs/main.c \
+			srcs/parsing.c \
+			srcs/get_map.c \
+			srcs/floodfill.c \
+			srcs/tools_1.c \
+			srcs/tools_2.c \
+			srcs/cleanup.c \
 
-INCLUDES	= 	includes/cub3d.h
+
+INCLUDES	= 	include/cub3d.h
 
 ### MACROS ###
 
 CC	= cc
 
-LDFLAGS = -lreadline
 
 CFLAGS	= -g -Wall -Werror -Wextra
 
@@ -35,7 +41,7 @@ OBJ	= $(FILES:.c=.o)
 all	: $(NAME)
 
 $(NAME)	: $(OBJ) $(INCLUDES)
-		$(CC) $(OBJ) $(LDFLAGS) -o  $(NAME) 
+		$(CC) $(OBJ) -o  $(NAME) 
 
 clean:
 		rm -f $(OBJ)

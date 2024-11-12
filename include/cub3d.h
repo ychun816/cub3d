@@ -6,12 +6,12 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 14:32:12 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:54:06 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include <dirent.h>
 # include <errno.h>
@@ -31,6 +31,10 @@
 # include <termios.h>
 # include <unistd.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
 typedef struct s_cube
 {
 	char	**map;
@@ -39,5 +43,16 @@ typedef struct s_cube
 // PARSING
 
 int			parsing(char **av, t_cube *cube);
+int			get_map(char *str, t_cube *cube);
+int			get_line_length(char *str, int i);
 
+// TOOLS
+void		*ft_calloc(size_t nmemb, size_t size);
+char		*ft_strdup(char *str);
+char		*ft_strndup(const char *s, int n);
+char		*ft_strjoin(char *s1, char *s2);
+
+// CLEANUP AND ERRORS
+void		cleanup(t_cube *cube);
+void		free_tab(char **tab);
 #endif

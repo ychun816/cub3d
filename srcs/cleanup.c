@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 15:54:28 by ahadj-ar         ###   ########.fr       */
+/*   Created: 2024/11/12 15:31:32 by ahadj-ar          #+#    #+#             */
+/*   Updated: 2024/11/12 15:53:39 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	main(int ac, char **av)
+void	free_tab(char **tab)
 {
-	t_cube	cube;
+	int	i;
 
-	if (ac != 2)
+	i = 0;
+	while (tab[i])
 	{
-		printf("Wrong arguments\n");
-		return (1);
+		free(tab[i]);
+		i++;
 	}
-	else
-	{
-		if (parsing(av, &cube))
-		{
-			printf("Wrong map\n");
-			return (1);
-		}
-		cleanup(&cube);
-	}
+	free(tab);
+}
+
+void	cleanup(t_cube *cube)
+{
+	if (cube->map)
+		free_tab(cube->map);
 }
