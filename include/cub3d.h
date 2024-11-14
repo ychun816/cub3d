@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 15:17:13 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:37:12 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,10 @@ void				init_data(t_data *data);
 // TOOLS
 
 void				print_tab(char **tab);
+void				ft_putstr_fd(char *str, int fd);
 int					ft_strlen(char *str);
 int					ft_tablen(char **tab);
+int					ft_is_valid_number(const char *str);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(char *str);
 char				*ft_strndup(const char *s, int n);
