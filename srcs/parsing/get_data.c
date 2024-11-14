@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:33:11 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 15:17:36 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:40:57 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,24 +79,17 @@ void	get_textures(t_cube *cube)
 	}
 }
 
-int	get_data(t_cube *cube)
+void	get_data(t_cube *cube)
 {
 	get_textures(cube);
 	if (check_data(cube->data))
-		return (1);
+		cleanup(cube, 1);
 	cube->data->north_img = trim_texture(cube->data->north_img);
 	cube->data->south_img = trim_texture(cube->data->south_img);
 	cube->data->west_img = trim_texture(cube->data->west_img);
 	cube->data->east_img = trim_texture(cube->data->east_img);
-	printf("%s\n", cube->data->north_img);
-	printf("%s\n", cube->data->west_img);
-	printf("%s\n", cube->data->south_img);
-	printf("%s\n", cube->data->east_img);
-	printf("%s\n", cube->data->c_line);
-	printf("%s\n", cube->data->f_line);
 	cube->data->c_value = get_rgb(cube->data->f_line);
 	cube->data->f_value = get_rgb(cube->data->c_line);
-		if (cube->data->c_value == -1 || cube->data->f_value == -1)
-			return (1);
-	return (0);
+	if (cube->data->c_value == -1 || cube->data->f_value == -1)
+		cleanup(cube, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:28:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 14:52:32 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:49:46 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,41 +24,53 @@ int	check_extension(char *av)
 	return (0);
 }
 
-int	check_elements(char **map)
+char	**trim_map(char **map)
 {
-	(void)map;
-	return (0);
-}
+	int		i;
+	int		j;
+	char	**tmp;
 
-int	check_walls(char **map)
-{
-	(void)map;
-	return (0);
+	i = -1;
+	tmp = copy_tab(map);
+	free_tab(map);
+	while (tmp[++i])
+	{
+		if (first_char(tmp[i]))
+			break ;
+	}
+	if (tmp[i] == NULL)
+		return (NULL);
+	j = i;
+	while (tmp[j])
+		j++;
+	map = ft_calloc(sizeof(char *), (j - i) + 1);
+	j = -1;
+	while (tmp[i])
+		map[++j] = ft_strdup(tmp[i++]);
+	free_tab(tmp);
+	return (map);
 }
 
 int	parsing(char **av, t_cube *cube)
 {
 	if (check_extension(av[1]))
 	{
-		printf("Wrong map extension\n");
-		return (1);
+		ft_putstr_fd("Wrong map extension\n", 2);
+		cleanup(cube, 1);
 	}
 	if (get_map(av[1], cube) == 1)
 	{
-		printf("Invalid map\n");
-		return (1);
+		ft_putstr_fd("Invalid map\n", 2);
+		cleanup(cube, 1);
 	}
-	if (get_data(cube))
-		return (1);
-	// if (check_elements(cube->map))
-	// {
-	// 	printf("Invalid map : wrong elements\n");
-	// 	return (1);
-	// }
-	// if (check_walls(cube->map))
-	// {
-	// 	printf("Invalid map : map is not closed\n");
-	// 	return (1);
-	// }
+	get_data(cube);
+	cube->map = trim_map(cube->map);
+	if (cube->map == NULL)
+		cleanup(cube, 1);
+	if (check_map(cube))
+	{
+		ft_putstr_fd("Invalid map\n", 2);
+		cleanup(cube, 1);
+	}
 	return (0);
 }

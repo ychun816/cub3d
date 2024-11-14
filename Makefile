@@ -6,7 +6,7 @@
 #    By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:25:13 by ahadj-ar          #+#    #+#              #
-#    Updated: 2024/11/14 14:52:38 by ahadj-ar         ###   ########.fr        #
+#    Updated: 2024/11/14 17:37:23 by ahadj-ar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ FILES	=	srcs/main.c \
 			srcs/parsing/get_map.c \
 			srcs/parsing/get_data.c \
 			srcs/parsing/get_rgb.c \
+			srcs/parsing/check_map.c \
+			srcs/parsing/check_walls.c \
 			srcs/floodfill.c \
 			srcs/tools/ft_strdup.c \
 			srcs/tools/ft_split.c \

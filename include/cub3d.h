@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 15:37:12 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:50:30 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_data
 	char			*c_line;
 	int				c_value;
 	int				f_value;
+	int				x_pos;
+	int				y_pos;
 }					t_data;
 
 typedef struct s_cube
@@ -59,11 +61,14 @@ int					parsing(char **av, t_cube *cube);
 int					get_map(char *str, t_cube *cube);
 int					get_line_length(char *str, int i);
 int					get_rgb(char *color);
-int					get_data(t_cube *cube);
+void				get_data(t_cube *cube);
+int					check_map(t_cube *cube);
+int					check_walls(char **map);
 
 // INIT
 
 void				init_data(t_data *data);
+void				init_cube(t_cube *cube, t_data *data);
 
 // TOOLS
 
@@ -83,10 +88,13 @@ void				ft_strtrim(char *str, char c);
 void				ft_strrtrim(char *str, char c);
 int					ft_atoi(const char *str);
 char				**ft_split(char const *s, char c);
+int					first_char(char *str);
+char				**copy_tab(char **tab);
+int					valid_elements(char c);
 
 // CLEANUP AND ERRORS
 
-void				cleanup(t_cube *cube);
+void				cleanup(t_cube *cube, int exit_code);
 void				free_tab(char **tab);
 
 #endif

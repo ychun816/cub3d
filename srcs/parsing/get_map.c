@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:15:09 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 14:01:01 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:58:28 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	get_map(char *str, t_cube *cube)
 	if (fd < 0)
 		return (1);
 	string = get_line(fd);
-	if (string[0] == '\0')
+	if (!string || string[0] == '\0')
 		return (free(string), close(fd), 1);
 	len = 0;
 	count_nl = 0;

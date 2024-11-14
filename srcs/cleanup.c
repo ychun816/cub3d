@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:31:32 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 15:17:36 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:45:10 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ void	free_data(t_data *data)
 		free(data->f_line);
 }
 
-void	cleanup(t_cube *cube)
+void	cleanup(t_cube *cube, int exit_code)
 {
 	if (cube->map)
 		free_tab(cube->map);
 	if (cube->data)
 		free_data(cube->data);
+	exit(exit_code);
 }

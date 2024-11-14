@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:06:30 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 15:37:03 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:37:24 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,21 @@ int	ft_tablen(char **tab)
 	return (i);
 }
 
+int	first_char(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ')
+		i++;
+	if (str[i])
+	{
+		if (str[i] == '0' || str[i] == '1')
+			return (1);
+	}
+	return (0);
+}
+
 int	ft_is_valid_number(const char *str)
 {
 	if (*str == '+' || *str == '-')
@@ -49,4 +64,21 @@ int	ft_is_valid_number(const char *str)
 		str++;
 	}
 	return (1);
+}
+
+char	**copy_tab(char **tab)
+{
+	int		size;
+	int		i;
+	char	**res;
+
+	i = 0;
+	size = ft_tablen(tab);
+	res = ft_calloc(sizeof(char *), size + 1);
+	while (tab[i])
+	{
+		res[i] = ft_strdup(tab[i]);
+		i++;
+	}
+	return (res);
 }
