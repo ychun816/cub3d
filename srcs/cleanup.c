@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:31:32 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 18:06:19 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:17:36 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	free_data(t_data *data)
 		free(data->south_img);
 	if (data->north_img)
 		free(data->north_img);
-	if (data->c_color)
-		free(data->c_color);
-	if (data->f_color)
-		free(data->f_color);
+	if (data->c_line)
+		free(data->c_line);
+	if (data->f_line)
+		free(data->f_line);
 }
 
 void	cleanup(t_cube *cube)

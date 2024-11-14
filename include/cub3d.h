@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 15:01:04 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:17:13 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ typedef struct s_data
 	char			*south_img;
 	char			*west_img;
 	char			*east_img;
-	char			*f_color;
-	char			*c_color;
+	char			*f_line;
+	char			*c_line;
 	int				c_value;
 	int				f_value;
 }					t_data;

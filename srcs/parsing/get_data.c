@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:33:11 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 15:01:41 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:17:36 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_data(t_data *data)
 {
-	if (data->c_color && data->f_color && data->west_img && data->east_img
+	if (data->c_line && data->f_line && data->west_img && data->east_img
 		&& data->north_img && data->south_img)
 		return (0);
 	else
@@ -56,9 +56,9 @@ void	copy_textures(t_cube *cube, int i, int j)
 		+ 1] == 'A')
 		cube->data->east_img = ft_strdup(cube->map[i]);
 	else if (cube->map[i][j] == 'F')
-		cube->data->f_color = ft_strdup(cube->map[i]);
+		cube->data->f_line = ft_strdup(cube->map[i]);
 	else if (cube->map[i][j] == 'C')
-		cube->data->c_color = ft_strdup(cube->map[i]);
+		cube->data->c_line = ft_strdup(cube->map[i]);
 }
 
 void	get_textures(t_cube *cube)
@@ -92,10 +92,10 @@ int	get_data(t_cube *cube)
 	printf("%s\n", cube->data->west_img);
 	printf("%s\n", cube->data->south_img);
 	printf("%s\n", cube->data->east_img);
-	printf("%s\n", cube->data->c_color);
-	printf("%s\n", cube->data->f_color);
-	cube->data->c_value = get_rgb(cube->data->f_color);
-	cube->data->f_value = get_rgb(cube->data->c_color);
+	printf("%s\n", cube->data->c_line);
+	printf("%s\n", cube->data->f_line);
+	cube->data->c_value = get_rgb(cube->data->f_line);
+	cube->data->f_value = get_rgb(cube->data->c_line);
 		if (cube->data->c_value == -1 || cube->data->f_value == -1)
 			return (1);
 	return (0);
