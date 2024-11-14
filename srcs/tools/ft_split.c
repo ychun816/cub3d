@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:34:53 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 14:49:49 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:08:13 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ static void	ft_wr_split(char **big_split, const char *str, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	char **big_split;
-	int nb_words;
+	char	**big_split;
+	int		nb_words;
 
 	if (s == NULL)
 		return (NULL);

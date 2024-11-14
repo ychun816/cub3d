@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:01:49 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 18:02:33 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:15:56 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	get_player_pos(char **map, t_data *data)
 			{
 				data->x_pos = j;
 				data->y_pos = i;
+				return ;
 			}
 			j++;
 		}
@@ -100,5 +101,6 @@ int	check_map(t_cube *cube)
 	if (check_walls(cube->map))
 		cleanup(cube, 1);
 	get_player_pos(cube->map, cube->data);
+	floodcall(cube->map, cube->data);
 	return (0);
 }

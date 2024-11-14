@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 17:50:30 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:16:11 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ int					get_rgb(char *color);
 void				get_data(t_cube *cube);
 int					check_map(t_cube *cube);
 int					check_walls(char **map);
+
+// FLOODFILL
+
+int					floodcall(char **map, t_data *data);
 
 // INIT
 
