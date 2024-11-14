@@ -6,11 +6,11 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:48:01 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 17:48:49 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:49:38 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 char	*ft_strdup(char *str)
 {
@@ -49,7 +49,7 @@ char	*ft_strndup(const char *s, int n)
 	return (dest);
 }
 
-char	*strndup_start(const char *s, int n)
+char	*ft_strndup_start(const char *s, int n)
 {
 	char	*dest;
 	int		i;

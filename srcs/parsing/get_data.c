@@ -6,31 +6,19 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:33:11 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 18:09:35 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:01:41 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
-
-void	print_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		printf("%s\n", tab[i]);
-		i++;
-	}
-}
+#include "../../include/cub3d.h"
 
 int	check_data(t_data *data)
 {
 	if (data->c_color && data->f_color && data->west_img && data->east_img
 		&& data->north_img && data->south_img)
-		return (1);
-	else
 		return (0);
+	else
+		return (1);
 }
 
 char	*trim_texture(char *str)
@@ -44,7 +32,7 @@ char	*trim_texture(char *str)
 	{
 		if (str[i] == '.')
 		{
-			tmp = strndup_start(str, i);
+			tmp = ft_strndup_start(str, i);
 			break ;
 		}
 		i++;
@@ -53,36 +41,48 @@ char	*trim_texture(char *str)
 	return (tmp);
 }
 
-int	get_textures(t_cube *cube)
+void	copy_textures(t_cube *cube, int i, int j)
+{
+	if (cube->map[i][j] == 'N' && cube->map[i][j + 1] && cube->map[i][j
+		+ 1] == 'O')
+		cube->data->north_img = ft_strdup(cube->map[i]);
+	else if (cube->map[i][j] == 'S' && cube->map[i][j + 1] && cube->map[i][j
+		+ 1] == 'O')
+		cube->data->south_img = ft_strdup(cube->map[i]);
+	else if (cube->map[i][j] == 'W' && cube->map[i][j + 1] && cube->map[i][j
+		+ 1] == 'E')
+		cube->data->west_img = ft_strdup(cube->map[i]);
+	else if (cube->map[i][j] == 'E' && cube->map[i][j + 1] && cube->map[i][j
+		+ 1] == 'A')
+		cube->data->east_img = ft_strdup(cube->map[i]);
+	else if (cube->map[i][j] == 'F')
+		cube->data->f_color = ft_strdup(cube->map[i]);
+	else if (cube->map[i][j] == 'C')
+		cube->data->c_color = ft_strdup(cube->map[i]);
+}
+
+void	get_textures(t_cube *cube)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	while (cube->map[i])
 	{
-		if (check_data(cube->data))
+		j = 0;
+		if (check_data(cube->data) == 0)
 			break ;
-		if (cube->map[i][0] == 'N' && cube->map[i][1] == 'O')
-			cube->data->north_img = ft_strdup(cube->map[i]);
-		else if (cube->map[i][0] == 'S' && cube->map[i][1] == 'O')
-			cube->data->south_img = ft_strdup(cube->map[i]);
-		else if (cube->map[i][0] == 'W' && cube->map[i][1] == 'E')
-			cube->data->west_img = ft_strdup(cube->map[i]);
-		else if (cube->map[i][0] == 'E' && cube->map[i][1] == 'A')
-			cube->data->east_img = ft_strdup(cube->map[i]);
-		else if (cube->map[i][0] == 'F')
-			cube->data->f_color = ft_strdup(cube->map[i]);
-		else if (cube->map[i][0] == 'C')
-			cube->data->c_color = ft_strdup(cube->map[i]);
+		while (cube->map[i][j] && cube->map[i][j] == ' ')
+			j++;
+		copy_textures(cube, i, j);
 		i++;
 	}
-	return (0);
 }
 
 int	get_data(t_cube *cube)
 {
 	get_textures(cube);
-	if (!check_data(cube->data))
+	if (check_data(cube->data))
 		return (1);
 	cube->data->north_img = trim_texture(cube->data->north_img);
 	cube->data->south_img = trim_texture(cube->data->south_img);
@@ -94,5 +94,9 @@ int	get_data(t_cube *cube)
 	printf("%s\n", cube->data->east_img);
 	printf("%s\n", cube->data->c_color);
 	printf("%s\n", cube->data->f_color);
+	cube->data->c_value = get_rgb(cube->data->f_color);
+	cube->data->f_value = get_rgb(cube->data->c_color);
+		if (cube->data->c_value == -1 || cube->data->f_value == -1)
+			return (1);
 	return (0);
 }

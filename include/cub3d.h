@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 18:02:21 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:01:04 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_data
 	char			*east_img;
 	char			*f_color;
 	char			*c_color;
+	int				c_value;
+	int				f_value;
 }					t_data;
 
 typedef struct s_cube
@@ -56,6 +58,7 @@ typedef struct s_cube
 int					parsing(char **av, t_cube *cube);
 int					get_map(char *str, t_cube *cube);
 int					get_line_length(char *str, int i);
+int					get_rgb(char *color);
 int					get_data(t_cube *cube);
 
 // INIT
@@ -64,17 +67,20 @@ void				init_data(t_data *data);
 
 // TOOLS
 
+void				print_tab(char **tab);
 int					ft_strlen(char *str);
+int					ft_tablen(char **tab);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(char *str);
 char				*ft_strndup(const char *s, int n);
-char				*strndup_start(const char *s, int n);
+char				*ft_strndup_start(const char *s, int n);
 char				*ft_strjoin(char *s1, char *s2);
 int					ft_strcmp(char *s1, char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 void				ft_strtrim(char *str, char c);
 void				ft_strrtrim(char *str, char c);
 int					ft_atoi(const char *str);
+char				**ft_split(char const *s, char c);
 
 // CLEANUP AND ERRORS
 

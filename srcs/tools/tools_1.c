@@ -6,11 +6,23 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:43:22 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 18:04:32 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:05:57 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
+
+void	print_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		printf("%s\n", tab[i]);
+		i++;
+	}
+}
 
 int	ft_strlen(char *str)
 {

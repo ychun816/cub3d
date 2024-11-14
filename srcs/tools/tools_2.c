@@ -6,11 +6,11 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:24:02 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/12 18:04:40 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:06:44 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 int	get_line_length(char *str, int i)
 {
