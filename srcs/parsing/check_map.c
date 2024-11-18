@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:01:49 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 18:15:56 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:49:45 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int	check_map(t_cube *cube)
 	if (check_walls(cube->map))
 		cleanup(cube, 1);
 	get_player_pos(cube->map, cube->data);
-	floodcall(cube->map, cube->data);
+	if (floodcall(cube->map, cube->data))
+		cleanup(cube, 1);
 	return (0);
 }

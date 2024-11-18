@@ -6,13 +6,16 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 18:16:11 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:48:22 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include "../mlx/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <dirent.h>
 # include <errno.h>
 # include <fcntl.h>
@@ -35,6 +38,9 @@
 #  define BUFFER_SIZE 1
 # endif
 
+# define W_HEIGHT 800
+# define W_WIDTH 1500
+
 typedef struct s_data
 {
 	char			*north_img;
@@ -52,6 +58,8 @@ typedef struct s_data
 typedef struct s_cube
 {
 	char			**map;
+	void			*mlx;
+	void			*mlx_win;
 	struct s_data	*data;
 }					t_cube;
 
@@ -68,6 +76,10 @@ int					check_walls(char **map);
 // FLOODFILL
 
 int					floodcall(char **map, t_data *data);
+
+// DISPLAY
+
+void				display(t_cube *cube);
 
 // INIT
 

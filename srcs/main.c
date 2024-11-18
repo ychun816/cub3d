@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 15:51:14 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:23:38 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int ac, char **av)
 		init_data(&data);
 		if (parsing(av, &cube))
 			cleanup(&cube, 1);
+		display(&cube);
 	}
 	cleanup(&cube, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:29:45 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 17:50:16 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:40:23 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	init_cube(t_cube *cube, t_data *data)
 {
 	cube->map = NULL;
+	cube->mlx = NULL;
+	cube->mlx_win = NULL;
 	cube->data = data;
 }
 
