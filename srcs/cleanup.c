@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:31:32 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/18 16:38:14 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:08:22 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,30 @@ void	free_tab(char **tab)
 
 void	free_data(t_data *data)
 {
-	if (data->east_img)
-		free(data->east_img);
-	if (data->west_img)
-		free(data->west_img);
-	if (data->south_img)
-		free(data->south_img);
-	if (data->north_img)
-		free(data->north_img);
+	if (data->ea_img)
+		free(data->ea_img);
+	if (data->we_img)
+		free(data->we_img);
+	if (data->so_img)
+		free(data->so_img);
+	if (data->no_img)
+		free(data->no_img);
 	if (data->c_line)
 		free(data->c_line);
 	if (data->f_line)
 		free(data->f_line);
+}
+
+void	destroy_sprites(t_cube *cube)
+{
+	if (cube->no_xpm)
+		mlx_destroy_image(cube->mlx, cube->no_xpm);
+	if (cube->so_xpm)
+		mlx_destroy_image(cube->mlx, cube->so_xpm);
+	if (cube->we_xpm)
+		mlx_destroy_image(cube->mlx, cube->we_xpm);
+	if (cube->ea_xpm)
+		mlx_destroy_image(cube->mlx, cube->ea_xpm);
 }
 
 void	cleanup(t_cube *cube, int exit_code)
@@ -47,6 +59,7 @@ void	cleanup(t_cube *cube, int exit_code)
 		free_tab(cube->map);
 	if (cube->data)
 		free_data(cube->data);
+	destroy_sprites(cube);
 	if (cube->mlx_win)
 	{
 		mlx_destroy_window(cube->mlx, cube->mlx_win);

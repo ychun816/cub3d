@@ -1,7 +1,7 @@
-NO      ./textures/eagle.xpm
-SO    ./textures/colorstone.xpm
-WE ./textures/greystone.xpm
-EA              ./textures/redbrick.xpm
+NO      ./sprites/N64.xpm
+SO    ./sprites/S64.xpm
+WE ./sprites/S64.xpm
+EA              ./sprites/E64.xpm
 
 F 125,125,255
 C 255,87,255

@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:33:11 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 16:40:57 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:01:00 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	check_data(t_data *data)
 {
-	if (data->c_line && data->f_line && data->west_img && data->east_img
-		&& data->north_img && data->south_img)
+	if (data->c_line && data->f_line && data->we_img && data->ea_img
+		&& data->no_img && data->so_img)
 		return (0);
 	else
 		return (1);
 }
 
-char	*trim_texture(char *str)
+char	*trim_textures(char *str)
 {
 	char	*tmp;
 	int		i;
@@ -45,16 +45,16 @@ void	copy_textures(t_cube *cube, int i, int j)
 {
 	if (cube->map[i][j] == 'N' && cube->map[i][j + 1] && cube->map[i][j
 		+ 1] == 'O')
-		cube->data->north_img = ft_strdup(cube->map[i]);
+		cube->data->no_img = ft_strdup(cube->map[i]);
 	else if (cube->map[i][j] == 'S' && cube->map[i][j + 1] && cube->map[i][j
 		+ 1] == 'O')
-		cube->data->south_img = ft_strdup(cube->map[i]);
+		cube->data->so_img = ft_strdup(cube->map[i]);
 	else if (cube->map[i][j] == 'W' && cube->map[i][j + 1] && cube->map[i][j
 		+ 1] == 'E')
-		cube->data->west_img = ft_strdup(cube->map[i]);
+		cube->data->we_img = ft_strdup(cube->map[i]);
 	else if (cube->map[i][j] == 'E' && cube->map[i][j + 1] && cube->map[i][j
 		+ 1] == 'A')
-		cube->data->east_img = ft_strdup(cube->map[i]);
+		cube->data->ea_img = ft_strdup(cube->map[i]);
 	else if (cube->map[i][j] == 'F')
 		cube->data->f_line = ft_strdup(cube->map[i]);
 	else if (cube->map[i][j] == 'C')
@@ -84,10 +84,10 @@ void	get_data(t_cube *cube)
 	get_textures(cube);
 	if (check_data(cube->data))
 		cleanup(cube, 1);
-	cube->data->north_img = trim_texture(cube->data->north_img);
-	cube->data->south_img = trim_texture(cube->data->south_img);
-	cube->data->west_img = trim_texture(cube->data->west_img);
-	cube->data->east_img = trim_texture(cube->data->east_img);
+	cube->data->no_img = trim_textures(cube->data->no_img);
+	cube->data->so_img = trim_textures(cube->data->so_img);
+	cube->data->we_img = trim_textures(cube->data->we_img);
+	cube->data->ea_img = trim_textures(cube->data->ea_img);
 	cube->data->c_value = get_rgb(cube->data->f_line);
 	cube->data->f_value = get_rgb(cube->data->c_line);
 	if (cube->data->c_value == -1 || cube->data->f_value == -1)

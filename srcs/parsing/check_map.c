@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:01:49 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/18 14:49:45 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:10:20 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	check_elements(char **map)
 		{
 			if (!valid_elements(map[i][j]))
 			{
-				ft_putstr_fd("invalid elements in the map\n", 2);
+				ft_putstr_fd("Invalid elements in the map\n", 2);
 				return (1);
 			}
 			j++;

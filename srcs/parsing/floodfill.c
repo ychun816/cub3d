@@ -6,11 +6,11 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:38:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/18 14:34:42 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:13:25 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 int	floodfill(char **map, int x, int y)
 {

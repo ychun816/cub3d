@@ -6,11 +6,27 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:30:00 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 17:51:53 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:16:34 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+int	count_commas(char *str)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == ',')
+			count++;
+		i++;
+	}
+	return (count);
+}
 
 int	create_rgb(int t, int r, int g, int b)
 {
@@ -49,15 +65,15 @@ int	get_rgb(char *color)
 	int		i;
 
 	split_tab = ft_split(color, ',');
-	if (!split_tab)
-		return (-1);
-	i = 0;
+	if (!split_tab || ft_tablen(split_tab) != 3 || count_commas(color) != 2)
+		return (ft_putstr_fd("Invalid RGB values\n", 2), free_tab(split_tab),
+			-1);
+	i = -1;
 	line = ft_calloc(1, 1);
-	while (split_tab[i])
+	while (split_tab[++i])
 	{
 		line = ft_strjoin(line, split_tab[i]);
 		line = ft_strjoin(line, " ");
-		i++;
 	}
 	free_tab(split_tab);
 	split_tab = ft_split(line, ' ');

@@ -6,11 +6,19 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/18 16:23:38 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:32:48 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void	start(t_cube *cube)
+{
+	mlx_loop_hook(cube->mlx, display, cube);
+	mlx_key_hook(cube->mlx_win, &input, cube);
+	mlx_hook(cube->mlx_win, 17, 0, close_window, cube);
+	mlx_loop(cube->mlx);
+}
 
 int	main(int ac, char **av)
 {
@@ -24,11 +32,11 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		init_cube(&cube, &data);
-		init_data(&data);
+		init_struct(&cube, &data);
 		if (parsing(av, &cube))
 			cleanup(&cube, 1);
-		display(&cube);
+		init_mlx(&cube);
+		start(&cube);
 	}
 	cleanup(&cube, 0);
 }

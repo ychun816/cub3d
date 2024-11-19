@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/18 16:48:22 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:34:25 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,26 @@
 #  define BUFFER_SIZE 1
 # endif
 
-# define W_HEIGHT 800
-# define W_WIDTH 1500
+# define W_HEIGHT 720
+# define W_WIDTH 1280
+
+# define X_HEIGHT 64
+# define X_WIDTH 64
 
 typedef struct s_data
 {
-	char			*north_img;
-	char			*south_img;
-	char			*west_img;
-	char			*east_img;
+	char			*no_img;
+	char			*so_img;
+	char			*we_img;
+	char			*ea_img;
 	char			*f_line;
 	char			*c_line;
 	int				c_value;
 	int				f_value;
 	int				x_pos;
 	int				y_pos;
+	int				xpm_height;
+	int				xpm_width;
 }					t_data;
 
 typedef struct s_cube
@@ -60,6 +65,10 @@ typedef struct s_cube
 	char			**map;
 	void			*mlx;
 	void			*mlx_win;
+	void			*no_xpm;
+	void			*we_xpm;
+	void			*so_xpm;
+	void			*ea_xpm;
 	struct s_data	*data;
 }					t_cube;
 
@@ -79,12 +88,16 @@ int					floodcall(char **map, t_data *data);
 
 // DISPLAY
 
-void				display(t_cube *cube);
+int					display(t_cube *cube);
+int					close_window(t_cube *cube);
+int					input(int keysim, t_cube *cube);
 
 // INIT
 
+void				init_struct(t_cube *cube, t_data *data);
 void				init_data(t_data *data);
 void				init_cube(t_cube *cube, t_data *data);
+void				init_mlx(t_cube *cube);
 
 // TOOLS
 
