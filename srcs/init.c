@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:29:45 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/19 17:35:40 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:05:08 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ void	init_data(t_data *data)
 	data->c_line = NULL;
 	data->c_value = 0;
 	data->f_value = 0;
-	data->x_pos = 0;
-	data->y_pos = 0;
 	data->xpm_height = 128;
 	data->xpm_width = 128;
 }
