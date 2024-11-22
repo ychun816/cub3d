@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:01:49 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/19 16:10:20 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/22 15:47:05 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,30 @@ int	check_elements(char **map)
 	return (0);
 }
 
+void	get_player_orientation(t_vec *dir, int x, int y, char **map)
+{
+	if (map[y][x] == 'N')
+	{
+		dir->x = -1;
+		dir->y = 0;
+	}
+	if (map[y][x] == 'S')
+	{
+		dir->x = 1;
+		dir->y = 0;
+	}
+	if (map[y][x] == 'W')
+	{
+		dir->x = -1;
+		dir->y = 0;
+	}
+	if (map[y][x] == 'E')
+	{
+		dir->x = 1;
+		dir->y = 0;
+	}
+}
+
 void	get_player_pos(char **map, t_data *data)
 {
 	int	i;
@@ -72,8 +96,9 @@ void	get_player_pos(char **map, t_data *data)
 			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E'
 				|| map[i][j] == 'W')
 			{
-				data->x_pos = j;
-				data->y_pos = i;
+				data->p_pos.x = (double)j;
+				data->p_pos.y = (double)i;
+				get_player_orientation(&data->p_dir, j, i, map);
 				return ;
 			}
 			j++;

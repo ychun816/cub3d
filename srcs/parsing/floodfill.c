@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:38:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/19 16:13:25 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/22 15:27:52 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	floodcall(char **map, t_data *data)
 	copy_map = copy_tab(map);
 	if (!copy_map)
 		return (1);
-	res = floodfill(copy_map, data->x_pos, data->y_pos);
+	res = floodfill(copy_map, (int)data->p_pos.x, (int)data->p_pos.y);
 	if (res == -1)
 	{
 		free_tab(copy_map);
