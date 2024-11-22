@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/19 17:34:25 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/22 15:08:24 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "../mlx/mlx.h"
+# include "./vectors.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <dirent.h>
@@ -33,6 +34,7 @@
 # include <sys/wait.h>
 # include <termios.h>
 # include <unistd.h>
+# include <math.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
@@ -54,10 +56,13 @@ typedef struct s_data
 	char			*c_line;
 	int				c_value;
 	int				f_value;
-	int				x_pos;
-	int				y_pos;
 	int				xpm_height;
 	int				xpm_width;
+	t_vec			p_pos;
+	t_vec			p_dir;
+	t_vec			cam_plane;
+	t_vec			ray_dir;
+	t_map			map;
 }					t_data;
 
 typedef struct s_cube
