@@ -6,7 +6,7 @@
 #    By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:25:13 by ahadj-ar          #+#    #+#              #
-#    Updated: 2024/11/19 17:34:43 by ahadj-ar         ###   ########.fr        #
+#    Updated: 2024/11/22 16:07:29 by ahadj-ar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ FILES   = srcs/main.c \
           srcs/parsing/check_walls.c \
           srcs/parsing/floodfill.c \
           srcs/display/display.c \
+          srcs/display/walls.c \
           srcs/display/display_tools.c \
           srcs/tools/ft_strdup.c \
           srcs/tools/ft_split.c \

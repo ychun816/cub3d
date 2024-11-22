@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/22 15:08:24 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:13:14 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <linux/limits.h>
+# include <math.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -34,7 +35,6 @@
 # include <sys/wait.h>
 # include <termios.h>
 # include <unistd.h>
-# include <math.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
@@ -96,6 +96,7 @@ int					floodcall(char **map, t_data *data);
 int					display(t_cube *cube);
 int					close_window(t_cube *cube);
 int					input(int keysim, t_cube *cube);
+void				walls(double ray_len);
 
 // INIT
 
