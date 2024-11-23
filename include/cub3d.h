@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/22 16:13:14 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/23 13:43:22 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,14 @@
 # define X_HEIGHT 64
 # define X_WIDTH 64
 
+# define KEY_UP 126
+# define KEY_DOWN 125
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+
+# define MOVE_SPEED 0.1
+# define ROTATE_SPEED 0.1
+
 typedef struct s_data
 {
 	char			*no_img;
@@ -54,8 +62,6 @@ typedef struct s_data
 	char			*ea_img;
 	char			*f_line;
 	char			*c_line;
-	int				c_value;
-	int				f_value;
 	int				xpm_height;
 	int				xpm_width;
 	t_vec			p_pos;
@@ -74,6 +80,8 @@ typedef struct s_cube
 	void			*we_xpm;
 	void			*so_xpm;
 	void			*ea_xpm;
+	int				c_value;
+	int				f_value;
 	struct s_data	*data;
 }					t_cube;
 
@@ -96,8 +104,7 @@ int					floodcall(char **map, t_data *data);
 int					display(t_cube *cube);
 int					close_window(t_cube *cube);
 int					input(int keysim, t_cube *cube);
-void				walls(double ray_len);
-
+void				walls(t_cube *cube, int x, double ray_len);
 // INIT
 
 void				init_struct(t_cube *cube, t_data *data);

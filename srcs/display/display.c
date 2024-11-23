@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:23 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/22 16:13:46 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/23 13:46:43 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,15 @@ int	ray_dda(t_vec *side_dist, t_vec *delta_dist, t_vec *step, t_map *map)
 	}
 }
 
-double	ray_distance(t_cube *cube, t_data *data, t_vec *ray_dir)
+double	ray_distance(t_cube *cube, t_data *data, t_vec *ray_dir, int *side)
 {
 	t_vec	delta_dist;
 	t_vec	side_dist;
 	t_vec	step;
-	int		side;
 
 	data->map.x = (int)data->p_pos.x;
 	data->map.y = (int)data->p_pos.y;
-	side = 0;
+	*side = 0;
 	delta_dist.x = sqrt(1 + (ray_dir->x * ray_dir->y) / (ray_dir->x
 				/ ray_dir->x));
 	delta_dist.y = sqrt(1 + (ray_dir->x * ray_dir->x) / (ray_dir->y
@@ -69,7 +68,7 @@ double	ray_distance(t_cube *cube, t_data *data, t_vec *ray_dir)
 	get_ray(&side_dist, &step, &delta_dist, data);
 	while (1)
 	{
-		side = ray_dda(&side_dist, &delta_dist, &step, &data->map);
+		*side = ray_dda(&side_dist, &delta_dist, &step, &data->map);
 		if (cube->map[data->map.y][data->map.x] == '1')
 			break ;
 	}
@@ -82,6 +81,7 @@ double	ray_distance(t_cube *cube, t_data *data, t_vec *ray_dir)
 int	display(t_cube *cube)
 {
 	int		x;
+	int		side;
 	double	cam_x;
 	double	ray_len;
 	t_data	*data;
@@ -96,15 +96,8 @@ int	display(t_cube *cube)
 		cam_x = 2 * x / (double)W_WIDTH - 1;
 		data->ray_dir.x = data->p_dir.x + data->cam_plane.x * cam_x;
 		data->ray_dir.y = data->p_dir.y + data->cam_plane.y * cam_x;
-		ray_len = ray_distance(cube, data, &data->ray_dir);
-		// A METTRE AILLEURS
-		// |
-		// V
-		walls(ray_len);
+		ray_len = ray_distance(cube, data, &data->ray_dir, &side);
+		walls(cube, x, ray_len);
 	}
-	// mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->so_xpm, 0, 0);
-	// mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->no_xpm, 0, 0);
-	// mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->we_xpm, 0, 0);
-	// mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->ea_xpm, 0, 0);
-	return (0 + 0);
+	return (0);
 }

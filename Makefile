@@ -6,7 +6,7 @@
 #    By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:25:13 by ahadj-ar          #+#    #+#              #
-#    Updated: 2024/11/22 16:07:29 by ahadj-ar         ###   ########.fr        #
+#    Updated: 2024/11/23 12:52:40 by ahadj-ar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,9 @@ $(NAME) : $(MLX) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) $(INCLUDE) -o $(NAME)
 
 $(MLX) :
-	git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR)
+	@if [ ! -d "$(MLX_DIR)" ]; then \
+		git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR); \
+	fi
 	make -C $(MLX_DIR)
 
 clean :

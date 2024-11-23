@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:30:00 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/19 17:16:34 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/23 12:49:47 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	convert_rgb(char **rgb)
 		g = ft_atoi(rgb[2]);
 	if (rgb[3])
 		b = ft_atoi(rgb[3]);
-	if (r > 255 || r < 0 || g > 255 || g < 0 || b > 255 | b < 0)
+	if (r > 255 || r < 0 || g > 255 || g < 0 || b > 255 || b < 0)
 		return (ft_putstr_fd("Invalid RGB values\n", 2), -1);
 	return (create_rgb(0, r, g, b));
 }

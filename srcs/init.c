@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:29:45 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/22 14:05:08 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/23 13:19:21 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	init_cube(t_cube *cube, t_data *data)
 	cube->we_xpm = NULL;
 	cube->so_xpm = NULL;
 	cube->ea_xpm = NULL;
+	cube->c_value = 0;
+	cube->f_value = 0;
 	cube->data = data;
 }
 
@@ -66,8 +68,6 @@ void	init_data(t_data *data)
 	data->so_img = NULL;
 	data->f_line = NULL;
 	data->c_line = NULL;
-	data->c_value = 0;
-	data->f_value = 0;
 	data->xpm_height = 128;
 	data->xpm_width = 128;
 }

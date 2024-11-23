@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:33:11 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/19 17:01:00 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/23 12:58:40 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void	get_data(t_cube *cube)
 	cube->data->so_img = trim_textures(cube->data->so_img);
 	cube->data->we_img = trim_textures(cube->data->we_img);
 	cube->data->ea_img = trim_textures(cube->data->ea_img);
-	cube->data->c_value = get_rgb(cube->data->f_line);
-	cube->data->f_value = get_rgb(cube->data->c_line);
-	if (cube->data->c_value == -1 || cube->data->f_value == -1)
+	cube->c_value = get_rgb(cube->data->f_line);
+	cube->f_value = get_rgb(cube->data->c_line);
+	if (cube->c_value == -1 || cube->f_value == -1)
 		cleanup(cube, 1);
 }
