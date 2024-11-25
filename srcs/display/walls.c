@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:07:14 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/25 17:13:24 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:48:05 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	display_vertical_line(t_cube *cube, int x, int start, int end)
 
 	(void)x;
 	(void)end;
-	color = 0x000000FF;
+	color = 0x00696969;
 	y = start;
 	while (y <= end)
 	{
