@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:31:32 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/19 17:08:22 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:45:45 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ void	destroy_sprites(t_cube *cube)
 		mlx_destroy_image(cube->mlx, cube->ea_xpm);
 }
 
-void	cleanup(t_cube *cube, int exit_code)
+void	cleanup_mlx(t_cube *cube)
 {
-	if (cube->map)
-		free_tab(cube->map);
-	if (cube->data)
-		free_data(cube->data);
-	destroy_sprites(cube);
+	if (cube->img->img)
+	{
+		mlx_destroy_image(cube->mlx, cube->img->img);
+		cube->img->img = NULL;
+	}
 	if (cube->mlx_win)
 	{
 		mlx_destroy_window(cube->mlx, cube->mlx_win);
@@ -71,5 +71,16 @@ void	cleanup(t_cube *cube, int exit_code)
 		free(cube->mlx);
 		cube->mlx = NULL;
 	}
+}
+
+void	cleanup(t_cube *cube, int exit_code)
+{
+	if (cube->map)
+		free_tab(cube->map);
+	if (cube->data)
+		free_data(cube->data);
+	destroy_sprites(cube);
+	if (cube->mlx)
+		cleanup_mlx(cube);
 	exit(exit_code);
 }

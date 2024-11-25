@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:23 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/25 11:34:37 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:11:34 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ int	display(t_cube *cube)
 	data = cube->data;
 	data->cam_plane.x = 0;
 	data->cam_plane.y = 0.66;
-	mlx_clear_window(cube->mlx, cube->mlx_win);
 	x = -1;
+	mlx_clear_window(cube->mlx, cube->mlx_win);
 	while (++x < W_WIDTH)
 	{
 		cam_x = 2 * x / (double)W_WIDTH - 1;
@@ -99,5 +99,6 @@ int	display(t_cube *cube)
 		ray_len = ray_distance(cube, data, &data->ray_dir, &side);
 		walls(cube, x, ray_len);
 	}
+	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img->img, 0, 0);
 	return (0);
 }

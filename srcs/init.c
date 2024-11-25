@@ -6,28 +6,11 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:29:45 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/23 13:19:21 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:25:11 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-void	init_assets(t_cube *cube)
-{
-	cube->so_xpm = mlx_xpm_file_to_image(cube->mlx, cube->data->so_img,
-			&cube->data->xpm_width, &cube->data->xpm_height);
-	cube->no_xpm = mlx_xpm_file_to_image(cube->mlx, cube->data->no_img,
-			&cube->data->xpm_width, &cube->data->xpm_height);
-	cube->ea_xpm = mlx_xpm_file_to_image(cube->mlx, cube->data->ea_img,
-			&cube->data->xpm_width, &cube->data->xpm_height);
-	cube->we_xpm = mlx_xpm_file_to_image(cube->mlx, cube->data->we_img,
-			&cube->data->xpm_width, &cube->data->xpm_height);
-	if (!cube->so_xpm || !cube->no_xpm || !cube->we_xpm || !cube->ea_xpm)
-	{
-		ft_putstr_fd("loading textures error\n", 2);
-		cleanup(cube, 1);
-	}
-}
 
 void	init_mlx(t_cube *cube)
 {
@@ -43,11 +26,18 @@ void	init_mlx(t_cube *cube)
 		ft_putstr_fd("Window creation failed\n", 2);
 		cleanup(cube, 1);
 	}
-	init_assets(cube);
+	cube->img->img = mlx_new_image(cube->mlx, W_WIDTH, W_HEIGHT);
+	if (!cube->img->img)
+		printf("Img creation failed\n");
+	cube->img->addr = mlx_get_data_addr(cube->img->img, &cube->img->bpp,
+			&cube->img->line_length, &cube->img->endian);
+	if (!cube->img->addr)
+		printf("Img creation failed\n");
 }
 
-void	init_cube(t_cube *cube, t_data *data)
+void	init_cube(t_cube *cube, t_data *data, t_img *img)
 {
+	cube->img = img;
 	cube->map = NULL;
 	cube->mlx = NULL;
 	cube->mlx_win = NULL;
@@ -72,8 +62,8 @@ void	init_data(t_data *data)
 	data->xpm_width = 128;
 }
 
-void	init_struct(t_cube *cube, t_data *data)
+void	init_struct(t_cube *cube, t_data *data, t_img *img)
 {
-	init_cube(cube, data);
+	init_cube(cube, data, img);
 	init_data(data);
 }

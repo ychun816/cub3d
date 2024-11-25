@@ -6,7 +6,7 @@
 #    By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:25:13 by ahadj-ar          #+#    #+#              #
-#    Updated: 2024/11/23 12:52:40 by ahadj-ar         ###   ########.fr        #
+#    Updated: 2024/11/25 16:03:22 by ahadj-ar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 NAME	= cub3d
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -g -Wall -Wextra -Werror
 
 FILES   = srcs/main.c \
           srcs/init.c \
@@ -29,6 +29,8 @@ FILES   = srcs/main.c \
           srcs/parsing/floodfill.c \
           srcs/display/display.c \
           srcs/display/walls.c \
+          srcs/display/mini_map.c \
+          srcs/display/moves.c \
           srcs/display/display_tools.c \
           srcs/tools/ft_strdup.c \
           srcs/tools/ft_split.c \
@@ -41,7 +43,7 @@ OBJS	= $(FILES:.c=.o)
 MLX_DIR	= ./mlx
 MLX		= $(MLX_DIR)/libmlx.a
 INCLUDE = -I$(MLX_DIR)
-LIB	= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
+LIB	    = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
 
 
 ################################################################################

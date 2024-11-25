@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:33:11 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/23 12:58:40 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/25 13:07:31 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,21 @@ char	*trim_textures(char *str)
 
 void	copy_textures(t_cube *cube, int i, int j)
 {
-	if (cube->map[i][j] == 'N' && cube->map[i][j + 1] && cube->map[i][j
-		+ 1] == 'O')
+	if (!cube->data->no_img && cube->map[i][j] == 'N' && cube->map[i][j + 1]
+		&& cube->map[i][j + 1] == 'O')
 		cube->data->no_img = ft_strdup(cube->map[i]);
-	else if (cube->map[i][j] == 'S' && cube->map[i][j + 1] && cube->map[i][j
-		+ 1] == 'O')
+	else if (!cube->data->so_img && cube->map[i][j] == 'S' && cube->map[i][j
+		+ 1] && cube->map[i][j + 1] == 'O')
 		cube->data->so_img = ft_strdup(cube->map[i]);
-	else if (cube->map[i][j] == 'W' && cube->map[i][j + 1] && cube->map[i][j
-		+ 1] == 'E')
+	else if (!cube->data->we_img && cube->map[i][j] == 'W' && cube->map[i][j
+		+ 1] && cube->map[i][j + 1] == 'E')
 		cube->data->we_img = ft_strdup(cube->map[i]);
-	else if (cube->map[i][j] == 'E' && cube->map[i][j + 1] && cube->map[i][j
-		+ 1] == 'A')
+	else if (!cube->data->ea_img && cube->map[i][j] == 'E' && cube->map[i][j
+		+ 1] && cube->map[i][j + 1] == 'A')
 		cube->data->ea_img = ft_strdup(cube->map[i]);
-	else if (cube->map[i][j] == 'F')
+	else if (!cube->data->f_line && cube->map[i][j] == 'F')
 		cube->data->f_line = ft_strdup(cube->map[i]);
-	else if (cube->map[i][j] == 'C')
+	else if (!cube->data->c_line && cube->map[i][j] == 'C')
 		cube->data->c_line = ft_strdup(cube->map[i]);
 }
 
@@ -83,7 +83,10 @@ void	get_data(t_cube *cube)
 {
 	get_textures(cube);
 	if (check_data(cube->data))
+	{
+		printf("Incorrect XPM or RGB values\n");
 		cleanup(cube, 1);
+	}
 	cube->data->no_img = trim_textures(cube->data->no_img);
 	cube->data->so_img = trim_textures(cube->data->so_img);
 	cube->data->we_img = trim_textures(cube->data->we_img);
