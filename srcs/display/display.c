@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:23 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/25 15:11:34 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:44:31 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,12 @@ double	ray_distance(t_cube *cube, t_data *data, t_vec *ray_dir, int *side)
 	data->map.x = (int)data->p_pos.x;
 	data->map.y = (int)data->p_pos.y;
 	*side = 0;
-	delta_dist.x = sqrt(1 + (ray_dir->x * ray_dir->y) / (ray_dir->x
-				/ ray_dir->x));
-	delta_dist.y = sqrt(1 + (ray_dir->x * ray_dir->x) / (ray_dir->y
-				/ ray_dir->y));
+	// delta_dist.x = sqrt(1 + (ray_dir->x * ray_dir->y) / (ray_dir->x
+	// 			/ ray_dir->x));
+	// delta_dist.y = sqrt(1 + (ray_dir->x * ray_dir->x) / (ray_dir->y
+	// 			/ ray_dir->y));
+	delta_dist.x = fabs(1.0 / ray_dir->x);
+	delta_dist.y = fabs(1.0 / ray_dir->y);
 	get_ray(&side_dist, &step, &delta_dist, data);
 	while (1)
 	{
@@ -72,7 +74,7 @@ double	ray_distance(t_cube *cube, t_data *data, t_vec *ray_dir, int *side)
 		if (cube->map[data->map.y][data->map.x] == '1')
 			break ;
 	}
-	if (!side)
+	if (*side == 0)
 		return (side_dist.x - delta_dist.x);
 	else
 		return (side_dist.y - delta_dist.y);

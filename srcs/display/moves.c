@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_tools.c                                    :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:07 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/25 15:55:43 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:43:39 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	move(int keysim, t_cube *cube, t_data *data)
 
 int	input(int keysim, t_cube *cube)
 {
-	if (keysim == XK_Up || keysim == XK_Down)
-		move(keysim, cube, cube->data);
+	// if (keysim == XK_Up || keysim == XK_Down)
+	// 	move(keysim, cube, cube->data);
 	if (keysim == XK_Escape)
 		return (cleanup(cube, 0), 0);
 	if (keysim == XK_Left)
@@ -77,7 +77,7 @@ int	input(int keysim, t_cube *cube)
 	if (keysim == XK_Right)
 		rotate_right(cube->data);
 	// mlx_clear_window(cube->mlx, cube->mlx_win);
-	// display(cube);
+	display(cube);
 	return (0);
 }
 
