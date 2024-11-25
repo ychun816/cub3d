@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/23 13:43:22 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:36:35 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # endif
 
 # define W_HEIGHT 720
-# define W_WIDTH 1280
+# define W_WIDTH 1080
 
 # define X_HEIGHT 64
 # define X_WIDTH 64
@@ -84,6 +84,19 @@ typedef struct s_cube
 	int				f_value;
 	struct s_data	*data;
 }					t_cube;
+
+typedef struct s_wall
+{
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
+	int				textnum;
+	int				text_x;
+	int				text_y;
+	double			wall_x;
+	double			step;
+	double			text_pos;
+}					t_wall;
 
 // PARSING
 

@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 13:34:58 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/22 15:04:28 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:35:49 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,19 @@
 
 # include "./cub3d.h"
 
+enum		orientation
+{
+	NORTH,
+	EAST,
+	WEST,
+	SOUTH,
+};
+
 typedef struct s_vec
 {
 	double	x;
 	double	y;
+	int		direction;
 }			t_vec;
 
 typedef struct s_map

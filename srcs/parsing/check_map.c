@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:01:49 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/22 15:47:05 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:30:32 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,25 @@ void	get_player_orientation(t_vec *dir, int x, int y, char **map)
 	{
 		dir->x = -1;
 		dir->y = 0;
+		dir->direction = NORTH;
 	}
 	if (map[y][x] == 'S')
 	{
 		dir->x = 1;
 		dir->y = 0;
+		dir->direction = SOUTH;
 	}
 	if (map[y][x] == 'W')
 	{
 		dir->x = -1;
 		dir->y = 0;
+		dir->direction = WEST;
 	}
 	if (map[y][x] == 'E')
 	{
 		dir->x = 1;
 		dir->y = 0;
+		dir->direction = EAST;
 	}
 }
 
