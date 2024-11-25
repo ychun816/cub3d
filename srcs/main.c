@@ -6,13 +6,13 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/25 17:04:44 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:09:41 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	start(t_cube *cube)
+void	game_start(t_cube *cube)
 {
 	mlx_loop_hook(cube->mlx, display, cube);
 	// mlx_loop_hook(cube->mlx, mini_map, cube);
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 		if (parsing(av, &cube))
 			cleanup(&cube, 1);
 		init_mlx(&cube);
-		start(&cube);
+		game_start(&cube);
 	}
 	cleanup(&cube, 0);
 }
