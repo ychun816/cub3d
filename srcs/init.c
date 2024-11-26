@@ -6,27 +6,30 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:29:45 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/26 13:17:16 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:48:21 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-// void	init_asset(t_cube *cube,void **textures)
-// {
-// 	int	size;
-
-// 	size = 64;
-// 	textures = ft_calloc(sizeof(void *), 4);
-// 	if (!textures)
-// 		printf("erreur\n");
-// 	textures[0] = mlx_xpm_file_to_image(cube->mlx, cube->data->no_img, &size, &size);
-// 	textures[1] = mlx_xpm_file_to_image(cube->mlx, cube->data->so_img, &size, &size);
-// 	textures[2] = mlx_xpm_file_to_image(cube->mlx, cube->data->we_img, &size, &size);
-// 	textures[3] = mlx_xpm_file_to_image(cube->mlx, cube->data->ea_img, &size, &size);
-// 	if (!textures[0] || textures[1] || textures[2]|| textures[3])
-// 		printf("ici\n");
-// }
+void	load_textures(t_cube *cube)
+{
+	int width, height;
+	// Load textures
+	cube->no_xpm = mlx_xpm_file_to_image(cube->mlx, cube->data->no_img, &width,
+			&height);
+	cube->so_xpm = mlx_xpm_file_to_image(cube->mlx, cube->data->so_img, &width,
+			&height);
+	cube->we_xpm = mlx_xpm_file_to_image(cube->mlx, cube->data->we_img, &width,
+			&height);
+	cube->ea_xpm = mlx_xpm_file_to_image(cube->mlx, cube->data->ea_img, &width,
+			&height);
+	if (!cube->no_xpm || !cube->so_xpm || !cube->we_xpm || !cube->ea_xpm)
+	{
+		ft_putstr_fd("Texture loading failed\n", 2);
+		cleanup(cube, 1);
+	}
+}
 
 void	init_mlx(t_cube *cube)
 {
@@ -36,6 +39,7 @@ void	init_mlx(t_cube *cube)
 		ft_putstr_fd("Window creation failed\n", 2);
 		cleanup(cube, 1);
 	}
+	load_textures(cube);
 	cube->mlx_win = mlx_new_window(cube->mlx, W_WIDTH, W_HEIGHT, "cub3d");
 	if (!cube->mlx_win)
 	{
@@ -49,7 +53,6 @@ void	init_mlx(t_cube *cube)
 			&cube->img->line_length, &cube->img->endian);
 	if (!cube->img->addr)
 		printf("Img creation failed\n");
-	// init_asset(cube,cube->img->textures);
 }
 
 void	init_cube(t_cube *cube, t_data *data, t_img *img)
