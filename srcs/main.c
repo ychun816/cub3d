@@ -16,7 +16,8 @@ void	game_start(t_cube *cube)
 {
 	mlx_loop_hook(cube->mlx, display, cube);
 	// mlx_loop_hook(cube->mlx, mini_map, cube);
-	mlx_key_hook(cube->mlx_win, &input, cube);
+//	mlx_key_hook(cube->mlx_win, &input, cube);
+	mlx_hook(cube->mlx_win, KeyPress, KeyPressMask, &input, cube);
 	mlx_hook(cube->mlx_win, 17, 0, close_window, cube);
 	mlx_loop(cube->mlx);
 }
