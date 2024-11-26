@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/25 16:04:24 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:05:35 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # endif
 
 # define W_HEIGHT 720
-# define W_WIDTH 1080
+# define W_WIDTH 800
 
 # define X_HEIGHT 64
 # define X_WIDTH 64
@@ -73,7 +73,9 @@ typedef struct s_data
 
 typedef struct s_img
 {
+	void	**textures;
 	void	*img;
+	void	*wall;
 	char	*addr;
 	int		bpp;
 	int		line_length;
