@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:07 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/26 13:14:52 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:01:43 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ int	input(int keysim, t_cube *cube)
 	// 	move(keysim, cube, cube->data);
 	if (keysim == XK_Escape)
 		return (cleanup(cube, 0), 0);
-	if (keysim == XK_Left)
-		rotate_left(cube->data);
 	if (keysim == XK_Right)
+		rotate_left(cube->data);
+	if (keysim == XK_Left)
 		rotate_right(cube->data);
 	// mlx_clear_window(cube->mlx, cube->mlx_win);
 	// display(cube);

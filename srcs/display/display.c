@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:23 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/26 18:01:12 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:10:49 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,24 +86,23 @@ double	ray_distance(t_cube *cube, t_data *data, t_vec *ray_dir, int *side)
 
 int	display(t_cube *cube)
 {
-	int		x;
-	int		side;
 	double	cam_x;
 	double	ray_len;
 	t_data	*data;
+	t_wall	wall;
 
 	data = cube->data;
 	data->cam_plane.x = -data->p_dir.y * 0.66;
 	data->cam_plane.y = data->p_dir.x * 0.66;
-	x = -1;
+	wall.x = -1;
 	mlx_clear_window(cube->mlx, cube->mlx_win);
-	while (++x < W_WIDTH)
+	while (++wall.x < W_WIDTH)
 	{
-		cam_x = 2 * x / (double)W_WIDTH - 1;
+		cam_x = 2 * wall.x / (double)W_WIDTH - 1;
 		data->ray_dir.x = data->p_dir.x + data->cam_plane.x * cam_x;
 		data->ray_dir.y = data->p_dir.y + data->cam_plane.y * cam_x;
-		ray_len = ray_distance(cube, data, &data->ray_dir, &side);
-		walls(cube, x,  ray_len);
+		ray_len = ray_distance(cube, data, &data->ray_dir, &wall.side);
+		walls(cube, &wall, ray_len);
 	}
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img->img, 0, 0);
 	return (0);
