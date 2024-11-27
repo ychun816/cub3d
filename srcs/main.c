@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/26 13:15:41 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:15:52 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 void	game_start(t_cube *cube)
 {
 	mlx_loop_hook(cube->mlx, display, cube);
-	// mlx_loop_hook(cube->mlx, mini_map, cube);
-//	mlx_key_hook(cube->mlx_win, &input, cube);
 	mlx_hook(cube->mlx_win, KeyPress, KeyPressMask, &input, cube);
-	mlx_hook(cube->mlx_win, 17, 0, close_window, cube);
+	mlx_hook(cube->mlx_win, 17, 0, cleanup, cube);
 	mlx_loop(cube->mlx);
 }
 

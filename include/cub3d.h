@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/27 12:20:58 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:25:55 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ typedef struct s_cube
 	t_data	*data;
 }			t_cube;
 
-typedef struct s_wall
+typedef struct s_cast
 {
 	int		x;
 	int		side;
@@ -134,7 +134,7 @@ typedef struct s_wall
 	double	wall_x;
 	double	step;
 	double	text_pos;
-}			t_wall;
+}			t_cast;
 
 // PARSING
 
@@ -153,17 +153,14 @@ int			floodcall(char **map, t_data *data);
 // DISPLAY
 
 int			display(t_cube *cube);
-int			close_window(t_cube *cube);
 int			input(int keysim, t_cube *cube);
-void		walls(t_cube *cube, t_wall *wall, double ray_len);
+void		walls(t_cube *cube, t_cast *cast, double ray_len);
 void		ft_pixel_put(t_img *pixel, int x, int y, int color);
 int			mini_map(t_cube *cube);
 
 // INIT
 
 void		init_struct(t_cube *cube, t_data *data, t_img *img);
-void		init_data(t_data *data);
-// void		init_cube(t_cube *cube, t_data *data, t_img *img);
 void		init_mlx(t_cube *cube);
 
 // TOOLS
@@ -190,7 +187,7 @@ int			valid_elements(char c);
 
 // CLEANUP AND ERRORS
 
-void		cleanup(t_cube *cube, int exit_code);
+int			cleanup(t_cube *cube, int exit_code);
 void		free_tab(char **tab);
 
 #endif

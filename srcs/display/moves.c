@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:07 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/27 16:11:32 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:26:51 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,7 @@ void	rotate_right(t_data *data)
 		* cos(-ROTATE_SPEED);
 }
 
-int	count_map_rows(char **map, int x, int y)
-{
-	int	i_grec;
-
-	i_grec = y;
-	if (!map[i_grec][x])
-		return (0);
-	while (map[i_grec][x] && (map[i_grec][x] != ' ' || map[i_grec][x] != '\t'))
-	{
-		i_grec++;
-	}
-	return (i_grec);
-}
-
-void	move_forward(int keysim, t_cube *cube, t_data *data)
+void	move_forward(t_cube *cube, t_data *data)
 {
 	char	**map;
 	double	new_x;
@@ -68,28 +54,23 @@ void	move_forward(int keysim, t_cube *cube, t_data *data)
 	int		row_length;
 
 	map = cube->map;
-	if (keysim == XK_w)
+	new_x = data->p_pos.x + data->p_dir.x * MOVE_SPEED;
+	new_y = data->p_pos.y + data->p_dir.y * MOVE_SPEED;
+	if (new_y >= 0)
 	{
-		new_x = data->p_pos.x + data->p_dir.x * MOVE_SPEED;
-		new_y = data->p_pos.y + data->p_dir.y * MOVE_SPEED;
-		if (new_y >= 0)
+		row_length = ft_strlen(map[(int)new_y]);
+		if (new_x >= 0 && new_x < row_length)
 		{
-			row_length = ft_strlen(map[(int)new_y]);
-			if (new_x >= 0 && new_x < row_length)
+			if (map[(int)new_y][(int)new_x] != '1')
 			{
-				if (map[(int)new_y][(int)new_x] != '1')
-				{
-					data->p_pos.x = new_x;
-					data->p_pos.y = new_y;
-				}
+				data->p_pos.x = new_x;
+				data->p_pos.y = new_y;
 			}
 		}
 	}
-	else
-		return ;
 }
 
-void	move_backward(int keysim, t_cube *cube, t_data *data)
+void	move_backward(t_cube *cube, t_data *data)
 {
 	char	**map;
 	double	new_x;
@@ -97,20 +78,17 @@ void	move_backward(int keysim, t_cube *cube, t_data *data)
 	int		row_length;
 
 	map = cube->map;
-	if (keysim == XK_s)
+	new_x = data->p_pos.x - data->p_dir.x * MOVE_SPEED;
+	new_y = data->p_pos.y - data->p_dir.y * MOVE_SPEED;
+	if (new_y >= 0)
 	{
-		new_x = data->p_pos.x - data->p_dir.x * MOVE_SPEED;
-		new_y = data->p_pos.y - data->p_dir.y * MOVE_SPEED;
-		if (new_y >= 0)
+		row_length = ft_strlen(map[(int)new_y]);
+		if (new_x >= 0 && new_x < row_length)
 		{
-			row_length = ft_strlen(map[(int)new_y]);
-			if (new_x >= 0 && new_x < row_length)
+			if (map[(int)new_y][(int)new_x] != '1')
 			{
-				if (map[(int)new_y][(int)new_x] != '1')
-				{
-					data->p_pos.x = new_x;
-					data->p_pos.y = new_y;
-				}
+				data->p_pos.x = new_x;
+				data->p_pos.y = new_y;
 			}
 		}
 	}
@@ -119,9 +97,9 @@ void	move_backward(int keysim, t_cube *cube, t_data *data)
 int	input(int keysim, t_cube *cube)
 {
 	if (keysim == XK_w)
-		move_forward(keysim, cube, cube->data);
+		move_forward(cube, cube->data);
 	if (keysim == XK_s)
-		move_backward(keysim, cube, cube->data);
+		move_backward(cube, cube->data);
 	if (keysim == XK_Escape)
 		return (cleanup(cube, 0), 0);
 	if (keysim == XK_d)
@@ -129,9 +107,4 @@ int	input(int keysim, t_cube *cube)
 	if (keysim == XK_a)
 		rotate_right(cube->data);
 	return (0);
-}
-
-int	close_window(t_cube *cube)
-{
-	return (cleanup(cube, 0), 0);
 }
