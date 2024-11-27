@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/27 12:11:58 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:20:58 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # endif
 
 # define W_HEIGHT 720
-# define W_WIDTH 800
+# define W_WIDTH 1280
 
 # define X_HEIGHT 64
 # define X_WIDTH 64
