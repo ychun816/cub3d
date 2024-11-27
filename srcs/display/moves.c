@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:07 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/27 11:01:43 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:11:32 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,38 +46,88 @@ void	rotate_right(t_data *data)
 		* cos(-ROTATE_SPEED);
 }
 
-void	move(int keysim, t_cube *cube, t_data *data)
+int	count_map_rows(char **map, int x, int y)
 {
-	if (keysim == XK_Up)
+	int	i_grec;
+
+	i_grec = y;
+	if (!map[i_grec][x])
+		return (0);
+	while (map[i_grec][x] && (map[i_grec][x] != ' ' || map[i_grec][x] != '\t'))
 	{
-		if (cube->map[(int)(data->p_pos.x + data->p_pos.y
-				* MOVE_SPEED)][(int)data->p_pos.y])
-			data->p_pos.x += data->p_pos.x * MOVE_SPEED;
-		if (cube->map[(int)data->p_pos.x][(int)(data->p_pos.y + data->p_dir.y
-				* MOVE_SPEED)])
-			data->p_pos.y += data->p_dir.y * MOVE_SPEED;
+		i_grec++;
 	}
-	// if (keyDown(SDLK_DOWN))
-	// {
-	// 	if (worldMap[int(posX - dirX * moveSpeed)][int(posY)] == false)
-	// 		posX -= dirX * moveSpeed;
-	// 	if (worldMap[int(posX)][int(posY - dirY * moveSpeed)] == false)
-	// 		posY -= dirY * moveSpeed;
-	// }
+	return (i_grec);
+}
+
+void	move_forward(int keysim, t_cube *cube, t_data *data)
+{
+	char	**map;
+	double	new_x;
+	double	new_y;
+	int		row_length;
+
+	map = cube->map;
+	if (keysim == XK_w)
+	{
+		new_x = data->p_pos.x + data->p_dir.x * MOVE_SPEED;
+		new_y = data->p_pos.y + data->p_dir.y * MOVE_SPEED;
+		if (new_y >= 0)
+		{
+			row_length = ft_strlen(map[(int)new_y]);
+			if (new_x >= 0 && new_x < row_length)
+			{
+				if (map[(int)new_y][(int)new_x] != '1')
+				{
+					data->p_pos.x = new_x;
+					data->p_pos.y = new_y;
+				}
+			}
+		}
+	}
+	else
+		return ;
+}
+
+void	move_backward(int keysim, t_cube *cube, t_data *data)
+{
+	char	**map;
+	double	new_x;
+	double	new_y;
+	int		row_length;
+
+	map = cube->map;
+	if (keysim == XK_s)
+	{
+		new_x = data->p_pos.x - data->p_dir.x * MOVE_SPEED;
+		new_y = data->p_pos.y - data->p_dir.y * MOVE_SPEED;
+		if (new_y >= 0)
+		{
+			row_length = ft_strlen(map[(int)new_y]);
+			if (new_x >= 0 && new_x < row_length)
+			{
+				if (map[(int)new_y][(int)new_x] != '1')
+				{
+					data->p_pos.x = new_x;
+					data->p_pos.y = new_y;
+				}
+			}
+		}
+	}
 }
 
 int	input(int keysim, t_cube *cube)
 {
-	// if (keysim == XK_Up || keysim == XK_Down)
-	// 	move(keysim, cube, cube->data);
+	if (keysim == XK_w)
+		move_forward(keysim, cube, cube->data);
+	if (keysim == XK_s)
+		move_backward(keysim, cube, cube->data);
 	if (keysim == XK_Escape)
 		return (cleanup(cube, 0), 0);
-	if (keysim == XK_Right)
+	if (keysim == XK_d)
 		rotate_left(cube->data);
-	if (keysim == XK_Left)
+	if (keysim == XK_a)
 		rotate_right(cube->data);
-	// mlx_clear_window(cube->mlx, cube->mlx_win);
-	// display(cube);
 	return (0);
 }
 
