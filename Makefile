@@ -6,7 +6,7 @@
 #    By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:25:13 by ahadj-ar          #+#    #+#              #
-#    Updated: 2024/11/25 16:03:22 by ahadj-ar         ###   ########.fr        #
+#    Updated: 2024/11/27 11:28:34 by ahadj-ar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ CFLAGS	= -g -Wall -Wextra -Werror
 
 FILES   = srcs/main.c \
           srcs/init.c \
+          srcs/init_mlx.c \
           srcs/parsing/parsing.c \
           srcs/parsing/get_map.c \
           srcs/parsing/get_data.c \
