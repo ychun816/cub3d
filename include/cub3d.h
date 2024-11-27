@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/27 11:45:09 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:11:58 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CUB3D_H
 
 # include "../mlx/mlx.h"
-# include "./vectors.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <dirent.h>
@@ -53,6 +52,27 @@
 
 # define MOVE_SPEED 0.1
 # define ROTATE_SPEED 0.1
+
+enum		e_orientation
+{
+	NORTH,
+	EAST,
+	WEST,
+	SOUTH,
+};
+
+typedef struct s_vec
+{
+	double	x;
+	double	y;
+	int		direction;
+}			t_vec;
+
+typedef struct s_map
+{
+	int		x;
+	int		y;
+}			t_map;
 
 typedef struct s_data
 {
