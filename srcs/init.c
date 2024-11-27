@@ -6,58 +6,20 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:29:45 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/26 17:48:21 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:06:26 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	load_textures(t_cube *cube)
+void	init_cube(t_cube *cube, t_data *data)
 {
-	int width, height;
-	// Load textures
-	cube->no_xpm = mlx_xpm_file_to_image(cube->mlx, cube->data->no_img, &width,
-			&height);
-	cube->so_xpm = mlx_xpm_file_to_image(cube->mlx, cube->data->so_img, &width,
-			&height);
-	cube->we_xpm = mlx_xpm_file_to_image(cube->mlx, cube->data->we_img, &width,
-			&height);
-	cube->ea_xpm = mlx_xpm_file_to_image(cube->mlx, cube->data->ea_img, &width,
-			&height);
-	if (!cube->no_xpm || !cube->so_xpm || !cube->we_xpm || !cube->ea_xpm)
+	cube->img = (t_img *)malloc(sizeof(t_img));
+	if (!cube->img)
 	{
-		ft_putstr_fd("Texture loading failed\n", 2);
+		ft_putstr_fd("Failed to allocate memory for image\n", 2);
 		cleanup(cube, 1);
 	}
-}
-
-void	init_mlx(t_cube *cube)
-{
-	cube->mlx = mlx_init();
-	if (!cube->mlx)
-	{
-		ft_putstr_fd("Window creation failed\n", 2);
-		cleanup(cube, 1);
-	}
-	load_textures(cube);
-	cube->mlx_win = mlx_new_window(cube->mlx, W_WIDTH, W_HEIGHT, "cub3d");
-	if (!cube->mlx_win)
-	{
-		ft_putstr_fd("Window creation failed\n", 2);
-		cleanup(cube, 1);
-	}
-	cube->img->img = mlx_new_image(cube->mlx, W_WIDTH, W_HEIGHT);
-	if (!cube->img->img)
-		printf("Img creation failed\n");
-	cube->img->addr = mlx_get_data_addr(cube->img->img, &cube->img->bpp,
-			&cube->img->line_length, &cube->img->endian);
-	if (!cube->img->addr)
-		printf("Img creation failed\n");
-}
-
-void	init_cube(t_cube *cube, t_data *data, t_img *img)
-{
-	cube->img = img;
 	cube->map = NULL;
 	cube->mlx = NULL;
 	cube->mlx_win = NULL;
@@ -78,12 +40,13 @@ void	init_data(t_data *data)
 	data->so_img = NULL;
 	data->f_line = NULL;
 	data->c_line = NULL;
-	data->xpm_height = 128;
-	data->xpm_width = 128;
+	data->xpm_height =  64;
+	data->xpm_width = 64;
 }
 
 void	init_struct(t_cube *cube, t_data *data, t_img *img)
 {
-	init_cube(cube, data, img);
+	(void)img;
+	init_cube(cube, data);
 	init_data(data);
 }

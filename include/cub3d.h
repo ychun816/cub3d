@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/26 18:00:48 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:45:09 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,14 @@ typedef struct s_data
 
 typedef struct s_img
 {
-	void	**textures;
+	int		*textures;
 	void	*img;
 	void	*wall;
 	char	*addr;
+	int		*north;
+	int		*south;
+	int		*west;
+	int		*east;
 	int		bpp;
 	int		line_length;
 	int		endian;
@@ -99,6 +103,8 @@ typedef struct s_cube
 
 typedef struct s_wall
 {
+	int		x;
+	int		side;
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
@@ -129,7 +135,7 @@ int			floodcall(char **map, t_data *data);
 int			display(t_cube *cube);
 int			close_window(t_cube *cube);
 int			input(int keysim, t_cube *cube);
-void		walls(t_cube *cube, int x, double ray_len);
+void		walls(t_cube *cube, t_wall *wall, double ray_len);
 void		ft_pixel_put(t_img *pixel, int x, int y, int color);
 int			mini_map(t_cube *cube);
 
@@ -137,7 +143,7 @@ int			mini_map(t_cube *cube);
 
 void		init_struct(t_cube *cube, t_data *data, t_img *img);
 void		init_data(t_data *data);
-void		init_cube(t_cube *cube, t_data *data, t_img *img);
+// void		init_cube(t_cube *cube, t_data *data, t_img *img);
 void		init_mlx(t_cube *cube);
 
 // TOOLS
