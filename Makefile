@@ -6,7 +6,7 @@
 #    By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:25:13 by ahadj-ar          #+#    #+#              #
-#    Updated: 2024/11/27 11:28:34 by ahadj-ar         ###   ########.fr        #
+#    Updated: 2024/11/27 16:53:51 by ahadj-ar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,14 +61,17 @@ $(MLX) :
 	fi
 	make -C $(MLX_DIR)
 
-clean :
-	rm -f $(OBJS)
-	make -C $(MLX_DIR) clean
+clean:
+		rm -f $(OBJS)
+		@if [ -d "$(MLX_DIR)" ]; then \
+			make -C $(MLX_DIR) clean; \
+		fi
 
-fclean : clean
-	rm -rf $(MLX_DIR)
-	rm -f $(NAME)
+fclean: clean
+		rm -rf $(MLX_DIR)
+		rm -f $(NAME)
 
-re : fclean all
+re: fclean all
+
 
 .PHONY : all clean fclean re bonus
