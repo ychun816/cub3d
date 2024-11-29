@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:07:14 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/27 16:26:16 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:06:37 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,10 @@ void	get_text_pos(t_cast *cast, t_data *data)
 		* cast->step;
 }
 
-void	choose_textures(t_cast *cast, t_cube *cube, double ray_len)
+void	choose_textures(t_cast *cast, t_cube *cube)
 {
 	t_data	*data;
 
-	(void)ray_len;
 	data = cube->data;
 	if (cast->side == 0)
 	{
@@ -104,7 +103,7 @@ void	walls(t_cube *cube, t_cast *cast, double ray_len)
 	if (!cast->side)
 		cast->wall_x = data->p_pos.y + ray_len * data->ray_dir.y;
 	else
-		cast->wall_x = data->p_pos.y + ray_len * data->ray_dir.x;
+		cast->wall_x = data->p_pos.x + ray_len * data->ray_dir.x;
 	cast->wall_x -= floor(cast->wall_x);
 	if ((!cast->side && data->ray_dir.x < 0) || (cast->side == 1
 			&& data->ray_dir.y < 0))
@@ -112,7 +111,7 @@ void	walls(t_cube *cube, t_cast *cast, double ray_len)
 	cast->step = 1.0 * data->xpm_height / cast->line_height;
 	cast->text_pos = (cast->draw_start - W_HEIGHT / 2 + cast->line_height / 2
 			* cast->step);
-	choose_textures(cast, cube, ray_len);
+	choose_textures(cast, cube);
 	x = cast->x;
 	display_vertical_line(cube, x, cast);
 }

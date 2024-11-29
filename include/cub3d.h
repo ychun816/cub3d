@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/27 16:25:55 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/28 15:38:32 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,14 @@ int			input(int keysim, t_cube *cube);
 void		walls(t_cube *cube, t_cast *cast, double ray_len);
 void		ft_pixel_put(t_img *pixel, int x, int y, int color);
 int			mini_map(t_cube *cube);
+
+// MOVEMENTS
+void		rotate_left(t_data *data);
+void		rotate_right(t_data *data);
+void		move_forward(t_cube *cube, t_data *data);
+void		move_backward(t_cube *cube, t_data *data);
+void		move_left(t_cube *cube, t_data *data);
+void		move_right(t_cube *cube, t_data *data);
 
 // INIT
 

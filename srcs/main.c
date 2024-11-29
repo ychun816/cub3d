@@ -6,11 +6,30 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/27 16:15:52 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:07:10 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+int	input(int keysim, t_cube *cube)
+{
+	if (keysim == XK_w)
+		move_forward(cube, cube->data);
+	if (keysim == XK_s)
+		move_backward(cube, cube->data);
+	if (keysim == XK_a)
+		move_left(cube, cube->data);
+	if (keysim == XK_d)
+		move_right(cube, cube->data);
+	if (keysim == XK_Left)
+		rotate_left(cube->data);
+	if (keysim == XK_Right)
+		rotate_right(cube->data);
+	if (keysim == XK_Escape)
+		return (cleanup(cube, 0), 0);
+	return (0);
+}
 
 void	game_start(t_cube *cube)
 {
