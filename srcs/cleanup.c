@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:31:32 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/27 16:17:19 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:25:49 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	cleanup(t_cube *cube, int exit_code)
 	destroy_sprites(cube);
 	if (cube->mlx)
 		cleanup_mlx(cube);
-	free(cube->img);
+	// if (cube->img != NULL)
+	// 	free(cube->img);
 	exit(exit_code);
 }

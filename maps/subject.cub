@@ -1,7 +1,7 @@
 NO      ./sprites/greystone.xpm
 SO    ./sprites/colorstone.xpm
 WE ./sprites/wood.xpm
-EA              ./sprites/mossy.xpm
+EA              ./sprites/redbrick.xpm
 
 F 105,105,105
 C 105,105,105

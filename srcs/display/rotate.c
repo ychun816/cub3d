@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:36:56 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/28 15:37:24 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:17:55 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	rotate_left(t_data *data)
 		- data->cam_plane.y * sin(-ROTATE_SPEED);
 	data->cam_plane.y = old_plane_x * sin(-ROTATE_SPEED) + data->cam_plane.y
 		* cos(-ROTATE_SPEED);
-}
 
+}
 void	rotate_right(t_data *data)
 {
 	double	old_dir_x;

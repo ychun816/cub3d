@@ -6,20 +6,16 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:29:45 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/27 12:11:26 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:26:04 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	init_cube(t_cube *cube, t_data *data)
+void	init_cube(t_cube *cube, t_data *data, t_img *img)
 {
-	cube->img = (t_img *)malloc(sizeof(t_img));
-	if (!cube->img)
-	{
-		ft_putstr_fd("Failed to allocate memory for image\n", 2);
-		cleanup(cube, 1);
-	}
+	cube->img = img;
+	cube->img->img = NULL;
 	cube->map = NULL;
 	cube->mlx = NULL;
 	cube->mlx_win = NULL;
@@ -46,7 +42,6 @@ void	init_data(t_data *data)
 
 void	init_struct(t_cube *cube, t_data *data, t_img *img)
 {
-	(void)img;
-	init_cube(cube, data);
+	init_cube(cube, data, img);
 	init_data(data);
 }
