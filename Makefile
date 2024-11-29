@@ -6,7 +6,7 @@
 #    By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:25:13 by ahadj-ar          #+#    #+#              #
-#    Updated: 2024/11/27 16:53:51 by ahadj-ar         ###   ########.fr        #
+#    Updated: 2024/11/28 15:38:49 by ahadj-ar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ FILES   = srcs/main.c \
           srcs/display/walls.c \
           srcs/display/mini_map.c \
           srcs/display/moves.c \
+          srcs/display/rotate.c \
           srcs/display/display_tools.c \
           srcs/tools/ft_strdup.c \
           srcs/tools/ft_split.c \
