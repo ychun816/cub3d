@@ -27,8 +27,8 @@ void	rotate_left(t_data *data)
 		- data->cam_plane.y * sin(-ROTATE_SPEED);
 	data->cam_plane.y = old_plane_x * sin(-ROTATE_SPEED) + data->cam_plane.y
 		* cos(-ROTATE_SPEED);
-
 }
+
 void	rotate_right(t_data *data)
 {
 	double	old_dir_x;
