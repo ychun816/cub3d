@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:31:32 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/29 18:25:49 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/01/30 19:15:24 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	cleanup_mlx(t_cube *cube)
 
 int	cleanup(t_cube *cube, int exit_code)
 {
-	if (exit_code > 1)
+	if (exit_code > 1)//WHY?
 		exit_code = 1;
 	if (cube->map)
 		free_tab(cube->map);
