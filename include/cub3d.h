@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/28 15:38:32 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/07 19:13:39 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,25 @@
 # define MOVE_SPEED 0.1
 # define ROTATE_SPEED 0.1
 
+
+//// MINIMAP
+//handle size,scale,x and y pos 
+typedef struct s_minimap
+{
+	int	y_offset;
+	int	x_offset;
+	int	scale;
+	int	width;
+	int	height;
+}	t_minimap;
+
+
+//minimap funcs
+// void	init_minimap(t_minimap *map);
+// int	draw_minimap();
+
+
+////////////
 enum		e_orientation
 {
 	NORTH,

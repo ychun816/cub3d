@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:23 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/12/14 17:13:41 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:01:00 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ int	display(t_cube *cube)
 	t_cast	cast;
 
 	data = cube->data;
-	data->cam_plane.x = -data->p_dir.y * 0.6;
-	data->cam_plane.y = data->p_dir.x * 0.6;
+	data->cam_plane.x = -data->p_dir.y * 0.66;
+	data->cam_plane.y = data->p_dir.x * 0.66;
 	cast.x = -1;
 	mlx_clear_window(cube->mlx, cube->mlx_win);
 	while (++cast.x < W_WIDTH)
