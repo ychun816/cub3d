@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/08 16:30:58 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/08 16:33:20 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	init_minimap(t_minimap *map);
 //put color, texture
 int	minimap(t_cube *cube);
 int	put_minimap_pixel();//fill pixel for each unit
+//
 //player pos
 int	set_player_minimap();
 
