@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/28 15:38:32 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/08 16:30:58 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,29 @@
 # define MOVE_SPEED 0.1
 # define ROTATE_SPEED 0.1
 
+
+//// MINIMAP ////
+//handle size,scale,x and y pos 
+typedef struct s_minimap
+{
+	double	scale;// Scale factor (1 map unit = X pixels)
+	int	width;//in pixels
+	int	height;//in pixels
+	int	y_default;
+	int	x_default;
+}	t_minimap;
+
+//// MINIMAP FUNCS ////
+//init
+void	init_minimap(t_minimap *map);
+//put color, texture
+int	minimap(t_cube *cube);
+int	put_minimap_pixel();//fill pixel for each unit
+//player pos
+int	set_player_minimap();
+
+
+
 enum		e_orientation
 {
 	NORTH,
@@ -66,6 +89,8 @@ typedef struct s_vec
 	double	x;
 	double	y;
 	int		direction;
+	//double dir_x? //Directional X component (for ray direction or movement)
+	//double dir_y? //Directional Y component (for ray direction or movement)
 }			t_vec;
 
 typedef struct s_map
@@ -156,7 +181,7 @@ int			display(t_cube *cube);
 int			input(int keysim, t_cube *cube);
 void		walls(t_cube *cube, t_cast *cast, double ray_len);
 void		ft_pixel_put(t_img *pixel, int x, int y, int color);
-int			mini_map(t_cube *cube);
+int			minimap(t_cube *cube);
 
 // MOVEMENTS
 void		rotate_left(t_data *data);
