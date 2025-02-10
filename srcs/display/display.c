@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:23 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/01/31 19:01:00 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/10 16:46:49 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+// initialize raycasting variables with the player position and orientation
+// determine distance and direction for DDA algo
+// 0.00001 to avoid division by zero
 
 void	get_ray(t_vec *side_dist, t_vec *step, t_vec *delta, t_data *data)
 {
@@ -40,6 +44,9 @@ void	get_ray(t_vec *side_dist, t_vec *step, t_vec *delta, t_data *data)
 	}
 }
 
+// DDA algo to determine if the ray moves in the x or y direction next
+// return 0 if moving in X direction, 1 if Y
+
 int	ray_dda(t_vec *side_dist, t_vec *delta_dist, t_vec *step, t_map *map)
 {
 	if (side_dist->x < side_dist->y)
@@ -55,6 +62,9 @@ int	ray_dda(t_vec *side_dist, t_vec *delta_dist, t_vec *step, t_map *map)
 		return (1);
 	}
 }
+
+// calculate the distance from the playter to the nearest wall that the ray will touch
+// use DDA algo to step through the grid of the map until a wall "1" is hit
 
 double	ray_distance(t_cube *cube, t_data *data, t_vec *ray_dir, int *side)
 {
@@ -83,6 +93,9 @@ double	ray_distance(t_cube *cube, t_data *data, t_vec *ray_dir, int *side)
 			* ray_dir->y);
 	return (perp_cast_distance);
 }
+
+// start of the casting, casts rays in columns 
+// from left to right and get the walls heights
 
 int	display(t_cube *cube)
 {
