@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:31:32 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/01/30 19:15:24 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/10 19:27:54 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,18 +73,36 @@ void	cleanup_mlx(t_cube *cube)
 	}
 }
 
+
 int	cleanup(t_cube *cube, int exit_code)
 {
-	if (exit_code > 1)//WHY?
+	if (exit_code > 1)
 		exit_code = 1;
 	if (cube->map)
 		free_tab(cube->map);
 	if (cube->data)
+	{
+		cleanup_minimap(cube);//added for mini
 		free_data(cube->data);
+	}
 	destroy_sprites(cube);
 	if (cube->mlx)
 		cleanup_mlx(cube);
-	// if (cube->img != NULL)
-	// 	free(cube->img);
 	exit(exit_code);
 }
+//OG
+// int	cleanup(t_cube *cube, int exit_code)
+// {
+// 	if (exit_code > 1)//WHY?
+// 		exit_code = 1;
+// 	if (cube->map)
+// 		free_tab(cube->map);
+// 	if (cube->data)
+// 		free_data(cube->data);
+// 	destroy_sprites(cube);
+// 	if (cube->mlx)
+// 		cleanup_mlx(cube);
+// 	// if (cube->img != NULL)
+// 	// 	free(cube->img);
+// 	exit(exit_code);
+// }

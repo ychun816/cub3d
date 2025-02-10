@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+         #
+#    By: yilin <yilin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 14:25:13 by ahadj-ar          #+#    #+#              #
-#    Updated: 2024/11/28 15:38:49 by ahadj-ar         ###   ########.fr        #
+#    Updated: 2025/02/10 17:55:06 by yilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ FILES   = srcs/main.c \
           srcs/parsing/floodfill.c \
           srcs/display/display.c \
           srcs/display/walls.c \
-          srcs/display/mini_map.c \
+          srcs/display/minimap.c \
           srcs/display/moves.c \
           srcs/display/rotate.c \
           srcs/display/display_tools.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/29 17:07:10 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:33:08 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	main(int ac, char **av)
 	else
 	{
 		init_struct(&cube, &data, &img);
+		printf("👹CAN I COME HERE?");
 		if (parsing(av, &cube))
 			cleanup(&cube, 1);
 		init_mlx(&cube);

@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/10 17:47:54 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/10 19:28:54 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,31 +56,18 @@
 //// MINIMAP ////
 # define MINIMAP_SIZE 100 // The max width/height of the minimap in pixels
 
-//handle size,scale,x and y pos 
-typedef struct s_minimap
-{
-	//If the map is larger, scale becomes smaller (each tile shrinks). If the map is small, scale remains large.
-	double	scale;//The size of each map tile in pixels on the minimap.// Scale factor (1 map unit = X pixels)
-	int	width;//in pixels
-	int	height;//in pixels
-	int	offset_y;
-	int	offset_x;
-}	t_minimap;
 
-//init
-int		minimap(t_cube *cube);
-void	init_minimap_struct(t_minimap *map);
+/******************************************************************************#
+#                                 STRUCS                                       #
+# *****************************************************************************/
 
-//put color, texture
-void	set_minimap_content(t_data *data);
-void	put_minimap_pixel(t_data *data, int map_x, int map_y, int color);//fill pixel for each unit
-void	put_minimap_bg();//or border
-
-//player pos
-int	set_player_minimap();
-int set_player_fov(x, y, );
-//////////////////
-
+typedef struct s_vec t_vec;
+typedef struct s_map t_map;
+typedef struct s_data t_data;
+typedef struct s_img t_img;
+typedef struct s_cube t_cube;
+typedef struct s_cast t_cast;
+typedef struct s_minimap t_minimap;
 
 enum		e_orientation
 {
@@ -103,26 +90,8 @@ typedef struct s_map
 {
 	int		x;
 	int		y;
+	char	**map;//added for mini
 }			t_map;
-
-typedef struct s_data
-{
-	char	*no_img;
-	char	*so_img;
-	char	*we_img;
-	char	*ea_img;
-	char	*f_line;
-	char	*c_line;
-	int		xpm_height;
-	int		xpm_width;
-	t_vec	p_pos;
-	t_vec	p_dir;
-	t_vec	cam_plane;
-	t_vec	ray_dir;
-	t_map	map;//t_map	*map;?? //added
-	t_img	img;
-	t_minimap *minimap;//add to link minimap
-}			t_data;
 
 typedef struct s_img
 {
@@ -139,6 +108,18 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
+//// MINIMAP ////
+//handle size,scale,x and y pos 
+typedef struct s_minimap
+{
+	//If the map is larger, scale becomes smaller (each tile shrinks). If the map is small, scale remains large.
+	double	scale;//The size of each map tile in pixels on the minimap.// Scale factor (1 map unit = X pixels)
+	int	width;//in pixels
+	int	height;//in pixels
+	int	offset_y;
+	int	offset_x;
+}	t_minimap;
+
 typedef struct s_cube
 {
 	char	**map;
@@ -154,6 +135,25 @@ typedef struct s_cube
 	t_data	*data;
 }			t_cube;
 
+typedef struct s_data
+{
+	char	*no_img;
+	char	*so_img;
+	char	*we_img;
+	char	*ea_img;
+	char	*f_line;
+	char	*c_line;
+	int		xpm_height;
+	int		xpm_width;
+	t_vec	p_pos;
+	t_vec	p_dir;
+	t_vec	cam_plane;
+	t_vec	ray_dir;
+	t_map	map;
+	t_img	mini_img;//added for mini
+	t_minimap minimap;//added for mini
+}			t_data;
+
 typedef struct s_cast
 {
 	int		x;
@@ -168,6 +168,10 @@ typedef struct s_cast
 	double	step;
 	double	text_pos;
 }			t_cast;
+
+/******************************************************************************#
+#                                 FUNCS                                        #
+# *****************************************************************************/
 
 // PARSING
 
@@ -189,7 +193,6 @@ int			display(t_cube *cube);
 int			input(int keysim, t_cube *cube);
 void		walls(t_cube *cube, t_cast *cast, double ray_len);
 void		ft_pixel_put(t_img *pixel, int x, int y, int color);
-int			set_minimap(t_cube *cube);
 
 // MOVEMENTS
 void		rotate_left(t_data *data);
@@ -230,5 +233,22 @@ int			valid_elements(char c);
 
 int			cleanup(t_cube *cube, int exit_code);
 void		free_tab(char **tab);
+
+
+//// MINIMAP ////
+//init
+int		minimap(t_cube *cube);
+void	init_minimap(t_data *data);
+
+//put color, texture
+void    set_minimap_content(t_data *data);
+void	put_minimap_pixel(t_data *data, int map_x, int map_y, int color);//fill pixel for each unit
+// void	put_minimap_bg();//or border
+void	cleanup_minimap(t_cube *cube);
+
+
+//player pos
+// int	set_player_minimap();
+// int set_player_fov(x, y, );
 
 #endif
