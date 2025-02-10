@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:29:45 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/10 19:56:01 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/10 20:03:55 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,3 +46,6 @@ void	init_struct(t_cube *cube, t_data *data, t_img *img)
 	init_data(data);
 	init_minimap(data);//added for mini
 }
+
+
+///AHHHH
