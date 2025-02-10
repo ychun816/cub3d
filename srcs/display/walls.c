@@ -6,11 +6,14 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:07:14 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/29 17:06:37 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:02:29 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+// get the color from the selected texture based on the textures coordinates,
+// casted as an int * for the minilibx 
 
 void	get_color(t_cast *cast, t_cube *cube, int *color, int tex_y)
 {
@@ -23,6 +26,8 @@ void	get_color(t_cast *cast, t_cube *cube, int *color, int tex_y)
 	else
 		*color = cube->img->east[tex_y * cube->data->xpm_width + cast->text_x];
 }
+
+// render a single vertical line for the 3D view
 
 void	display_vertical_line(t_cube *cube, int x, t_cast *cast)
 {
@@ -50,6 +55,8 @@ void	display_vertical_line(t_cube *cube, int x, t_cast *cast)
 	}
 }
 
+// calculates textures coordinates for walls
+
 void	get_text_pos(t_cast *cast, t_data *data)
 {
 	if (cast->textnum == 0)
@@ -64,6 +71,8 @@ void	get_text_pos(t_cast *cast, t_data *data)
 	cast->text_pos = (cast->draw_start - W_HEIGHT / 2 + cast->line_height / 2)
 		* cast->step;
 }
+
+// determines which texture to use based on the wall hit direction
 
 void	choose_textures(t_cast *cast, t_cube *cube)
 {
@@ -86,6 +95,8 @@ void	choose_textures(t_cast *cast, t_cube *cube)
 	}
 	get_text_pos(cast, cube->data);
 }
+
+// determines the properties of the wall slice and calls textures functions
 
 void	walls(t_cube *cube, t_cast *cast, double ray_len)
 {

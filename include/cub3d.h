@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/08 20:02:58 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/10 17:47:54 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@
 # define MOVE_SPEED 0.1
 # define ROTATE_SPEED 0.1
 
-
 //// MINIMAP ////
 # define MINIMAP_SIZE 100 // The max width/height of the minimap in pixels
 
@@ -81,6 +80,7 @@ void	put_minimap_bg();//or border
 int	set_player_minimap();
 int set_player_fov(x, y, );
 //////////////////
+
 
 enum		e_orientation
 {
