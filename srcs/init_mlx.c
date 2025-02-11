@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:27:59 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/10 18:45:40 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/11 16:41:34 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,7 @@ void	init_mlx(t_cube *cube)
 			&cube->img->line_length, &cube->img->endian);
 	if (!cube->img->addr)
 		printf("Img creation failed\n");
+	//added for mini
+	if (init_minimap_mlx(cube))
+		cleanup(cube, 1);
 }

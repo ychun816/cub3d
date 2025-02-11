@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:28:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/10 19:31:20 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/11 16:23:09 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,6 @@ int	parsing(char **av, t_cube *cube)
 	if (check_map(cube))
 	{
 		ft_putstr_fd("Invalid map\n", 2);
-		cleanup(cube, 1);
-	}
-	//added for mini
-	if (minimap(cube))
-	{
-		ft_putstr_fd("Invalid minimap\n", 2);
 		cleanup(cube, 1);
 	}
 	return (0);

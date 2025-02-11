@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/10 19:33:08 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/11 16:41:05 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	main(int ac, char **av)
 	else
 	{
 		init_struct(&cube, &data, &img);
-		printf("👹CAN I COME HERE?");
 		if (parsing(av, &cube))
 			cleanup(&cube, 1);
 		init_mlx(&cube);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:23 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/10 16:46:49 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:50:05 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,13 @@ int	display(t_cube *cube)
 		ray_len = ray_distance(cube, data, &data->ray_dir, &cast.side);
 		walls(cube, &cast, ray_len);
 	}
+	if (minimap(cube))//added for minimap
+		return (1);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img->img, 0, 0);
+	//added for minimap //Put img to window
+	mlx_put_image_to_window(cube->mlx, cube->mlx_win,
+        cube->data->mini_img.img,
+        cube->data->minimap.offset_x, 
+        cube->data->minimap.offset_y);
 	return (0);
 }
