@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/11 16:41:05 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/12 19:19:10 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	input(int keysim, t_cube *cube)
 void	game_start(t_cube *cube)
 {
 	mlx_loop_hook(cube->mlx, display, cube);
+	// put chun minimap in a hook // MAYBE NOT ????
 	mlx_hook(cube->mlx_win, KeyPress, KeyPressMask, &input, cube);
 	mlx_hook(cube->mlx_win, 17, 0, cleanup, cube);
 	mlx_loop(cube->mlx);

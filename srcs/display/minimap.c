@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:59:37 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/11 20:33:55 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/12 19:42:57 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ void	init_minimap(t_data *data)
     if (data->minimap.scale < 2)
         data->minimap.scale = 2;
     
-    data->minimap.width = data->map.x * data->minimap.scale;
-    data->minimap.height = data->map.y * data->minimap.scale;
+    // data->minimap.width = data->map.x * data->minimap.scale;
+    data->minimap.width = 250;
+    // data->minimap.height = data->map.y * data->minimap.scale;
+    data->minimap.height = 150;
 
     data->minimap.offset_x = 10;
     data->minimap.offset_y = W_HEIGHT - data->minimap.height - 10;
@@ -42,14 +44,12 @@ void	init_minimap(t_data *data)
 
 int init_minimap_mlx(t_cube *cube)
 {
-    //void	*mlx_new_image(t_xvar *xvar,int width, int height)
     cube->data->mini_img.img =  mlx_new_image(cube->mlx, cube->data->minimap.width, cube->data->minimap.height);
     if (!cube->data->mini_img.img)
     {
         ft_putstr_fd("Minimap creation failed (img)\n", 2);
         return (1);
     }
-    //char	*mlx_get_data_addr(t_img *img,int *bits_per_pixel,int *size_line,int *endian)
     cube->data->mini_img.addr = mlx_get_data_addr(cube->data->mini_img.img, &cube->data->mini_img.bpp, &cube->data->mini_img.line_length, &cube->data->mini_img.endian);
     if (!cube->data->mini_img.addr)
     {
@@ -80,32 +80,32 @@ void    set_minimap_content(t_data *data)
                 put_minimap_pixel(data, x, y, 0xebb88f); //yellow
         }
     }
-    put_minimap_frame(data);
+    // put_minimap_frame(data);
 }
 
 //put minimap frame
 //horizontal -> top + bottom
 //vertical -> left + right
-void put_minimap_frame(t_data *data)
-{
-    int y;
-    int x;
+// void put_minimap_frame(t_data *data)
+// {
+//     int y;
+//     int x;
     
-    //horizontal ---- ___
-    x = -1;
-    while (++x < data->minimap.width)
-    {
-        ft_pixel_put(&data->mini_img, x, 0, 0x000000);//top
-        ft_pixel_put(&data->mini_img, x, data->minimap.height - 1, 0x000000);//bottom
-    }
-    //vertical | |
-    y = -1;
-    while (++y < data->minimap.height)
-    {
-        ft_pixel_put(&data->mini_img, 0, y, 0x000000);//left
-        ft_pixel_put(&data->mini_img, data->minimap.width - 1, y, 0x000000);//right
-    }
-}
+//     //horizontal ---- ___
+//     x = -1;
+//     while (++x < data->minimap.width)
+//     {
+//         ft_pixel_put(&data->mini_img, x, 0, 0x000000);//top
+//         ft_pixel_put(&data->mini_img, x, data->minimap.height - 1, 0x000000);//bottom
+//     }
+//     //vertical | |
+//     y = -1;
+//     while (++y < data->minimap.height)
+//     {
+//         ft_pixel_put(&data->mini_img, 0, y, 0x000000);//left
+//         ft_pixel_put(&data->mini_img, data->minimap.width - 1, y, 0x000000);//right
+//     }
+// }
 
 //put pixel color
 void put_minimap_pixel(t_data *data, int map_x, int map_y, int color)
@@ -161,6 +161,7 @@ int	minimap(t_cube *cube)
 {
     if (!cube->data)// || other condition?
         return (1);
+    cube->data->map.map = cube->map;
     set_minimap_content(cube->data);//set map //set map frame
     set_player_on_minimap(cube->data);
     //set player fov(TBD)
@@ -183,16 +184,16 @@ int	minimap(t_cube *cube)
 //img, just in case
 void	cleanup_minimap(t_cube *cube)
 {
-    if (cube->data->mini_img.textures)
-    {
-        free(cube->data->mini_img.textures);
-        cube->data->mini_img.textures = NULL;
-    }
-    if (cube->data->mini_img.wall)
-    {
-        free(cube->data->mini_img.wall);
-        cube->data->mini_img.wall = NULL;
-    }
+    // if (cube->data->mini_img.textures)
+    // {
+    //     free(cube->data->mini_img.textures);
+    //     cube->data->mini_img.textures = NULL;
+    // }
+    // if (cube->data->mini_img.wall)
+    // {
+    //     free(cube->data->mini_img.wall);
+    //     cube->data->mini_img.wall = NULL;
+    // }
     if (cube->data->mini_img.img)
     {
         mlx_destroy_image(cube->mlx, cube->data->mini_img.img);

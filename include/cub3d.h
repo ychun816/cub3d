@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/11 20:08:59 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/12 19:40:53 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 # define ROTATE_SPEED 0.1
 
 //// MINIMAP ////
-# define MINIMAP_SIZE 100 // The max width/height of the minimap in pixels
+# define MINIMAP_SIZE 150 // The max width/height of the minimap in pixels
 
 
 /******************************************************************************#

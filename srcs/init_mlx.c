@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:27:59 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/11 16:41:34 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/12 17:23:25 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ void	init_mlx(t_cube *cube)
 	if (!cube->img->addr)
 		printf("Img creation failed\n");
 	//added for mini
-	if (init_minimap_mlx(cube))
-		cleanup(cube, 1);
+	// if (init_minimap_mlx(cube))
+		// cleanup(cube, 1);
 }

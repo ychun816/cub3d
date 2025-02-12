@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:23 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/11 16:50:05 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/12 19:23:37 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,10 @@ int	display(t_cube *cube)
 	t_cast	cast;
 
 	data = cube->data;
-	data->cam_plane.x = -data->p_dir.y * 0.66;
-	data->cam_plane.y = data->p_dir.x * 0.66;
+	data->cam_plane.x = -data->p_dir.y * 0.6;
+	data->cam_plane.y = data->p_dir.x * 0.6;
 	cast.x = -1;
-	mlx_clear_window(cube->mlx, cube->mlx_win);
+	// mlx_clear_window(cube->mlx, cube->mlx_win); // ????
 	while (++cast.x < W_WIDTH)
 	{
 		cam_x = 2 * cast.x / (double)W_WIDTH - 1;
@@ -117,6 +117,8 @@ int	display(t_cube *cube)
 		ray_len = ray_distance(cube, data, &data->ray_dir, &cast.side);
 		walls(cube, &cast, ray_len);
 	}
+	init_minimap(data);
+	init_minimap_mlx(cube);
 	if (minimap(cube))//added for minimap
 		return (1);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img->img, 0, 0);

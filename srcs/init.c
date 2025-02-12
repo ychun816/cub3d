@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:29:45 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/11 16:22:33 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/12 17:22:39 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	init_struct(t_cube *cube, t_data *data, t_img *img)
 {
 	init_cube(cube, data, img);
 	init_data(data);
-	init_minimap(data);//added for mini
+	// init_minimap(data);//added for mini
 }
