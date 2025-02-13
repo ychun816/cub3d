@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/12 19:40:53 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:04:10 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,9 +238,9 @@ void		free_tab(char **tab);
 //// MINIMAP ////
 //init
 int		minimap(t_cube *cube);
-void	init_minimap(t_data *data);
+void	init_minimap(t_cube *cube);
+// void	init_minimap(t_data *data);
 int	init_minimap_mlx(t_cube *cube);
-
 
 //put color, texture
 void    set_minimap_content(t_data *data);

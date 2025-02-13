@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:59:37 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/12 19:42:57 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:07:05 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,40 @@
 // determine max width/length
 // set scale (2 pixel per tile ensure visuality)
 // set width/heigth-> big map x/y * scale
-void	init_minimap(t_data *data)
+void	init_minimap(t_cube *cube)
+// void	init_minimap(t_data *data)
 {
     int max_dimension;
 
-    max_dimension = data->map.x;
-    if (data->map.y > data->map.x)
-        max_dimension = data->map.y;
+    //WRONGG i need to get lengh of map!!
+    max_dimension = cube->data->map.x;
+    if ( cube->data->map.y > cube->data->map.x)
+        max_dimension = cube->data->map.y;
+    // max_dimension = data->map.x;
+    // if (data->map.y > data->map.x)
+    //     max_dimension = data->map.y;
 
-    data->minimap.scale =  MINIMAP_SIZE / max_dimension;
-    if (data->minimap.scale < 2)
-        data->minimap.scale = 2;
+    cube->data->minimap.scale =  MINIMAP_SIZE / max_dimension;
+    if ( cube->data->minimap.scale < 2)
+        cube->data->minimap.scale = 2;
     
     // data->minimap.width = data->map.x * data->minimap.scale;
-    data->minimap.width = 250;
     // data->minimap.height = data->map.y * data->minimap.scale;
-    data->minimap.height = 150;
+    printf("cube->data->xpm_height: %d\n", cube->data->xpm_height);
+    printf("cube->data->xpm_height: %d\n", cube->data->xpm_height);
+    printf("data->xpm_height: %d\n", cube->data->xpm_height);
+    printf("data->xpm_width;: %d\n", cube->data->xpm_width);
+    printf("data->map.x: %d\n", cube->data->map.x);
+    printf("data->map.y: %d\n", cube->data->map.y);
+    // printf("max_dimension: %d\n", max_dimension);
+    printf("data->minimap.scale: %f\n", cube->data->minimap.scale);
+    cube->data->minimap.width = 250;
+    cube->data->minimap.height = 150;
+    // data->minimap.width = 250;
+    // data->minimap.height = 150;
 
-    data->minimap.offset_x = 10;
-    data->minimap.offset_y = W_HEIGHT - data->minimap.height - 10;
+    cube->data->minimap.offset_x = 10;
+    cube->data->minimap.offset_y = W_HEIGHT - cube->data->minimap.height - 10;
 }
 
 //init_minimap_mlx()!!

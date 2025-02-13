@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:23 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/12 19:23:37 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:04:33 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	display(t_cube *cube)
 		ray_len = ray_distance(cube, data, &data->ray_dir, &cast.side);
 		walls(cube, &cast, ray_len);
 	}
-	init_minimap(data);
+	init_minimap(cube);// init_minimap(data);
 	init_minimap_mlx(cube);
 	if (minimap(cube))//added for minimap
 		return (1);
