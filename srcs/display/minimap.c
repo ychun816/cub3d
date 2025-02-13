@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:59:37 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/13 20:07:05 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/13 22:37:52 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,50 +16,77 @@
 // determine max width/length
 // set scale (2 pixel per tile ensure visuality)
 // set width/heigth-> big map x/y * scale
-void	init_minimap(t_cube *cube)
-// void	init_minimap(t_data *data)
+
+void init_minimap(t_cube *cube)
 {
     int max_dimension;
 
-    //WRONGG i need to get lengh of map!!
-    max_dimension = cube->data->map.x;
-    if ( cube->data->map.y > cube->data->map.x)
-        max_dimension = cube->data->map.y;
-    // max_dimension = data->map.x;
-    // if (data->map.y > data->map.x)
-    //     max_dimension = data->map.y;
+    if (!cube || !cube->data || !cube->data->map.map)
+        return;
 
-    cube->data->minimap.scale =  MINIMAP_SIZE / max_dimension;
-    if ( cube->data->minimap.scale < 2)
+    // Get actual map dimensions
+    cube->data->map.width = ft_strlen(cube->data->map.map[0]);
+    cube->data->map.height = 0;
+    while (cube->data->map.map[cube->data->map.height])
+        cube->data->map.height++;
+
+    max_dimension = cube->data->map.width;
+    if (cube->data->map.height > cube->data->map.width)
+        max_dimension = cube->data->map.height;
+
+    cube->data->minimap.scale = MINIMAP_SIZE / max_dimension;
+    if (cube->data->minimap.scale < 2)
         cube->data->minimap.scale = 2;
-    
-    // data->minimap.width = data->map.x * data->minimap.scale;
-    // data->minimap.height = data->map.y * data->minimap.scale;
-    printf("cube->data->xpm_height: %d\n", cube->data->xpm_height);
-    printf("cube->data->xpm_height: %d\n", cube->data->xpm_height);
-    printf("data->xpm_height: %d\n", cube->data->xpm_height);
-    printf("data->xpm_width;: %d\n", cube->data->xpm_width);
-    printf("data->map.x: %d\n", cube->data->map.x);
-    printf("data->map.y: %d\n", cube->data->map.y);
-    // printf("max_dimension: %d\n", max_dimension);
-    printf("data->minimap.scale: %f\n", cube->data->minimap.scale);
-    cube->data->minimap.width = 250;
-    cube->data->minimap.height = 150;
-    // data->minimap.width = 250;
-    // data->minimap.height = 150;
+
+    cube->data->minimap.mn_width = cube->data->map.width * cube->data->minimap.scale;
+    cube->data->minimap.mn_height = cube->data->map.height * cube->data->minimap.scale;
 
     cube->data->minimap.offset_x = 10;
-    cube->data->minimap.offset_y = W_HEIGHT - cube->data->minimap.height - 10;
+    cube->data->minimap.offset_y = W_HEIGHT - cube->data->minimap.mn_height - 10;
 }
+
+//  OGGGG
+// void	init_minimap(t_cube *cube)
+// // void	init_minimap(t_data *data)
+// {
+//     int max_dimension;
+
+//     max_dimension = cube->data->map.width;
+//     if ( cube->data->map.height > cube->data->map.width)
+//         max_dimension = cube->data->map.height;
+//     //WRONGG: i need to get lengh of map!!try with new struc:
+//     // max_dimension = data->map.x;
+//     // if (data->map.y > data->map.x)
+//     //     max_dimension = data->map.y;
+
+//     cube->data->minimap.scale =  MINIMAP_SIZE / max_dimension;
+//     if ( cube->data->minimap.scale < 2)//4?
+//         cube->data->minimap.scale = 2;//4?
+    
+//     cube->data->minimap.mn_width = cube->data->map.width * cube->data->minimap.scale;
+//     cube->data->minimap.mn_height = cube->data->map.height * cube->data->minimap.scale;
+//     // cube->data->minimap.mn_width = 250;
+//     // cube->data->minimap.mn_height = 150;
+
+//     cube->data->minimap.offset_x = 10;
+//     cube->data->minimap.offset_y = W_HEIGHT - cube->data->minimap.mn_height - 10;
+//     // printf("👹cube->data->xpm_height: %d\n", cube->data->xpm_height);
+//     // printf("👹cube->data->xpm_height: %d\n", cube->data->xpm_height);
+//     // printf("👹data->xpm_height: %d\n", cube->data->xpm_height);
+//     // printf("👹data->xpm_width;: %d\n", cube->data->xpm_width);
+//     // printf("👹data->map.x: %d\n", cube->data->map.x);
+//     // printf("👹data->map.y: %d\n", cube->data->map.y);
+//     // printf("max_dimension: %d\n", max_dimension);
+//     // printf("👹data->minimap.scale: %f\n", cube->data->minimap.scale);
+// }
 
 //init_minimap_mlx()!!
 //Creating a blank image buffer where you can draw!!
 //put mini_img img -> if fail, error msg
 //get mini_img addr -> if fail, error msg
-
 int init_minimap_mlx(t_cube *cube)
 {
-    cube->data->mini_img.img =  mlx_new_image(cube->mlx, cube->data->minimap.width, cube->data->minimap.height);
+    cube->data->mini_img.img =  mlx_new_image(cube->mlx, cube->data->minimap.mn_width, cube->data->minimap.mn_height);
     if (!cube->data->mini_img.img)
     {
         ft_putstr_fd("Minimap creation failed (img)\n", 2);
@@ -83,44 +110,48 @@ void    set_minimap_content(t_data *data)
     int x;
     int y;
 
-    y = -1;
-    while (++y < data->map.y)
+    if (!data || !data->map.map)
+        return;
+
+    y = 0;
+    while (y < data->map.height)
     {
-        x = -1;
-        while (++x < data->map.x)
+        if (!data->map.map[y])  // Check if row exists
+            break;
+            
+        x = 0;
+        while (x < data->map.width && data->map.map[y][x])  // Check if column exists
         {
-            if (data->map.map[y][x] == '1')//wall
-                put_minimap_pixel(data, x, y, 0x2f6299); //blue 
-            else if (data->map.map[y][x] == '0')//path
-                put_minimap_pixel(data, x, y, 0xebb88f); //yellow
+            if (data->map.map[y][x] == '1')
+            {
+                put_minimap_pixel(data, x, y, 0x2f6299); // blue
+            }
+            else if (data->map.map[y][x] == '0')
+            {
+                put_minimap_pixel(data, x, y, 0xebb88f); // yellow
+            }
+            x++;
         }
+        y++;
     }
-    // put_minimap_frame(data);
+    // y = -1;
+    // while (++y < data->map.height)//data->map.y
+    // {
+    //     x = -1;
+    //     while (++x < data->map.width)//data->map.x
+    //     {
+    //         if (data->map.map[y][x] == '1')
+    //         {
+    //             put_minimap_pixel(data, x, y, 0x2f6299); //blue 
+    //         }
+    //         else if (data->map.map[y][x] == '0')
+    //         {
+    //             put_minimap_pixel(data, x, y, 0xebb88f); //yellow
+    //         }
+    //     }
+    // }
 }
 
-//put minimap frame
-//horizontal -> top + bottom
-//vertical -> left + right
-// void put_minimap_frame(t_data *data)
-// {
-//     int y;
-//     int x;
-    
-//     //horizontal ---- ___
-//     x = -1;
-//     while (++x < data->minimap.width)
-//     {
-//         ft_pixel_put(&data->mini_img, x, 0, 0x000000);//top
-//         ft_pixel_put(&data->mini_img, x, data->minimap.height - 1, 0x000000);//bottom
-//     }
-//     //vertical | |
-//     y = -1;
-//     while (++y < data->minimap.height)
-//     {
-//         ft_pixel_put(&data->mini_img, 0, y, 0x000000);//left
-//         ft_pixel_put(&data->mini_img, data->minimap.width - 1, y, 0x000000);//right
-//     }
-// }
 
 //put pixel color
 void put_minimap_pixel(t_data *data, int map_x, int map_y, int color)
@@ -136,13 +167,21 @@ void put_minimap_pixel(t_data *data, int map_x, int map_y, int color)
         j = -1;
         while (++j < data->minimap.scale)
         {
-            screen_x = map_x *data->minimap.scale + i;//data->minimap.offset_x * (map_x *data->minimap.scale) + i
-            screen_y = map_y *data->minimap.scale + j;//data->minimap.offset_y * (map_y *data->minimap.scale) + j
-            ft_pixel_put(&data->mini_img, screen_x, screen_y, color);
-            //t_img *pixel, int x, int y, int color
+            screen_x = map_x * data->minimap.scale + i;
+            screen_y = map_y * data->minimap.scale + j;
+            // Add bounds checking
+            if (screen_x >= 0 && screen_x < data->minimap.mn_width &&
+                screen_y >= 0 && screen_y < data->minimap.mn_height)
+            {
+                ft_pixel_put(&data->mini_img, screen_x, screen_y, color);
+            }
+            // screen_x = data->minimap.offset_x + (map_x *data->minimap.scale) + i;//screen_x = map_x *data->minimap.scale + i;
+            // screen_y = data->minimap.offset_y + (map_y *data->minimap.scale) + j;//screen_y = map_y *data->minimap.scale + j;
+            // ft_pixel_put(&data->mini_img, screen_x, screen_y, color);
         }
     }
 }
+
 
 //set player pos on minimap
 //get player pos
@@ -155,34 +194,49 @@ void    set_player_on_minimap(t_data *data)
     int x;
     int y;
 
+    // player_x = (int)(data->p_pos.x * data->minimap.scale) + data->minimap.offset_x;
+    // player_y = (int)(data->p_pos.y * data->minimap.scale) + data->minimap.offset_y;
     player_x = data->p_pos.x * data->minimap.scale;
     player_y = data->p_pos.y * data->minimap.scale;
     
     //draw circle
-    x = -2;
     y = -2;
-    while (++y <= 2)
+    while (y <= 3)
     {
-        while (++x <= 2)
+        x = -2;
+        while (x <= 3)
         {
-            if (x * x + y * y <= 4)
+            if (x * x + y * y <= 9)
+            // Boundary check before drawing the pixel
+            {     
+                if (player_x + x >= 0 && player_x + x < data->minimap.mn_width &&
+                    player_y + y >= 0 && player_y + y < data->minimap.mn_height)
                 ft_pixel_put(&data->mini_img, player_x + x, player_y + y, 0xFF0000);// Red
+            }
+            x++;
         }
+        y++;
     }
 }
 
 //MAIN MINIMAP
 int	minimap(t_cube *cube)
 {
-    if (!cube->data)// || other condition?
+    if (!cube->data || !cube->data->map.map || !cube->data->mini_img.img)
+    // if (!cube->data)// || other condition?
         return (1);
-    cube->data->map.map = cube->map;
-    set_minimap_content(cube->data);//set map //set map frame
+    // cube->data->map.map = cube->map;
+    // Make sure map dimensions are properly set
+    cube->data->map.width = ft_strlen(cube->data->map.map[0]);
+    cube->data->map.height = 0;
+    while (cube->data->map.map[cube->data->map.height])
+        cube->data->map.height++;
+        
+    set_minimap_content(cube->data);
     set_player_on_minimap(cube->data);
     //set player fov(TBD)
     return (0);
 }
-
 
 
 // //set player_fov
@@ -209,6 +263,8 @@ void	cleanup_minimap(t_cube *cube)
     //     free(cube->data->mini_img.wall);
     //     cube->data->mini_img.wall = NULL;
     // }
+
+    //SHOULD PROB ONLY NEED THIS
     if (cube->data->mini_img.img)
     {
         mlx_destroy_image(cube->mlx, cube->data->mini_img.img);

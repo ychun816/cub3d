@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/12 19:19:10 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/13 22:30:04 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ int	input(int keysim, t_cube *cube)
 
 void	game_start(t_cube *cube)
 {
+	    // Initialize minimap once at startup
+    if (!cube || !cube->data)
+        return;
+        
+    // Ensure map is properly copied
+    cube->data->map.map = cube->map;  // Make sure this is a proper deep copy if needed
+	
+	init_minimap(cube);//mini
+	if (init_minimap_mlx(cube))//mini
+		return ;
+
 	mlx_loop_hook(cube->mlx, display, cube);
 	// put chun minimap in a hook // MAYBE NOT ????
 	mlx_hook(cube->mlx_win, KeyPress, KeyPressMask, &input, cube);

@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/13 20:04:10 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/13 22:15:16 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 # define ROTATE_SPEED 0.1
 
 //// MINIMAP ////
-# define MINIMAP_SIZE 150 // The max width/height of the minimap in pixels
+# define MINIMAP_SIZE 300 // The max width/height of the minimap in pixels
 
 
 /******************************************************************************#
@@ -88,9 +88,11 @@ typedef struct s_vec
 
 typedef struct s_map
 {
-	int		x;
-	int		y;
+	int		x;//player x coordinate
+	int		y;//player y coordinate
 	char	**map;//added for mini
+	int		width;//added for mini//// Map width (number of columns)
+	int		height;//added for mini// Map height (number of rows)
 }			t_map;
 
 typedef struct s_img
@@ -114,10 +116,12 @@ typedef struct s_minimap
 {
 	//If the map is larger, scale becomes smaller (each tile shrinks). If the map is small, scale remains large.
 	double	scale;//The size of each map tile in pixels on the minimap.// Scale factor (1 map unit = X pixels)
-	int	width;//in pixels
-	int	height;//in pixels
+	int	mn_width;//in pixels
+	int	mn_height;//in pixels
 	int	offset_y;
 	int	offset_x;
+	// int		screen_x; //MAYBE NEED?
+	// int		screen_y; //MAYBE NEED?
 }	t_minimap;
 
 typedef struct s_cube
@@ -250,6 +254,6 @@ void	cleanup_minimap(t_cube *cube);
 
 //player pos
 void    set_player_on_minimap(t_data *data);
-// int set_player_fov(x, y, );
+// int set_player_fov(x, y);
 
 #endif
