@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:59:37 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/13 22:37:52 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/14 17:15:17 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,44 +112,21 @@ void    set_minimap_content(t_data *data)
 
     if (!data || !data->map.map)
         return;
-
-    y = 0;
-    while (y < data->map.height)
+    y = -1;
+    while (++y < data->map.height)//data->map.y
     {
-        if (!data->map.map[y])  // Check if row exists
-            break;
-            
-        x = 0;
-        while (x < data->map.width && data->map.map[y][x])  // Check if column exists
+        x = -1;
+        while (++x < data->map.width)//data->map.x
         {
             if (data->map.map[y][x] == '1')
-            {
-                put_minimap_pixel(data, x, y, 0x2f6299); // blue
-            }
-            else if (data->map.map[y][x] == '0')
-            {
-                put_minimap_pixel(data, x, y, 0xebb88f); // yellow
-            }
-            x++;
+                put_minimap_pixel(data, x, y, 0x2f6299); //blue 
+            else if (data->map.map[y][x] == '0' || data->map.map[y][x] == 'S'  || data->map.map[y][x] == 'W' || data->map.map[y][x] == 'E' || data->map.map[y][x] == 'N')
+                put_minimap_pixel(data, x, y, 0xebb88f); //yellow
+            else//background
+                put_minimap_pixel(data, x, y, 0x2f6299); //transsparent//(fully transparent white)
         }
-        y++;
     }
-    // y = -1;
-    // while (++y < data->map.height)//data->map.y
-    // {
-    //     x = -1;
-    //     while (++x < data->map.width)//data->map.x
-    //     {
-    //         if (data->map.map[y][x] == '1')
-    //         {
-    //             put_minimap_pixel(data, x, y, 0x2f6299); //blue 
-    //         }
-    //         else if (data->map.map[y][x] == '0')
-    //         {
-    //             put_minimap_pixel(data, x, y, 0xebb88f); //yellow
-    //         }
-    //     }
-    // }
+    
 }
 
 
@@ -181,7 +158,6 @@ void put_minimap_pixel(t_data *data, int map_x, int map_y, int color)
         }
     }
 }
-
 
 //set player pos on minimap
 //get player pos
@@ -235,6 +211,10 @@ int	minimap(t_cube *cube)
     set_minimap_content(cube->data);
     set_player_on_minimap(cube->data);
     //set player fov(TBD)
+    	// mlx_put_image_to_window(cube->mlx, cube->mlx_win,
+        // cube->data->mini_img.img,
+        // cube->data->minimap.offset_x, 
+        // cube->data->minimap.offset_y);
     return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:23 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/13 22:31:13 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/14 17:27:44 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	display(t_cube *cube)
 	data->cam_plane.x = -data->p_dir.y * 0.6;
 	data->cam_plane.y = data->p_dir.x * 0.6;
 	cast.x = -1;
-	// mlx_clear_window(cube->mlx, cube->mlx_win); // ????
+	mlx_clear_window(cube->mlx, cube->mlx_win);
 	while (++cast.x < W_WIDTH)
 	{
 		cam_x = 2 * cast.x / (double)W_WIDTH - 1;
@@ -121,8 +121,8 @@ int	display(t_cube *cube)
 	// init_minimap_mlx(cube);
 	if (minimap(cube))//added for minimap
 		return (1);
-	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img->img, 0, 0);
 	//added for minimap //Put img to window
+	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img->img, 0, 0);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win,
         cube->data->mini_img.img,
         cube->data->minimap.offset_x, 

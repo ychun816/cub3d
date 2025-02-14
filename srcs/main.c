@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/13 22:30:04 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/14 16:49:03 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	game_start(t_cube *cube)
 		return ;
 
 	mlx_loop_hook(cube->mlx, display, cube);
-	// put chun minimap in a hook // MAYBE NOT ????
+	// mlx_loop_hook(cube->mlx, minimap, cube);// put chun minimap in a hook // MAYBE NOT ????
 	mlx_hook(cube->mlx_win, KeyPress, KeyPressMask, &input, cube);
 	mlx_hook(cube->mlx_win, 17, 0, cleanup, cube);
 	mlx_loop(cube->mlx);
