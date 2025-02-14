@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:59:37 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/14 17:15:17 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/14 19:55:29 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void init_minimap(t_cube *cube)
         return;
 
     // Get actual map dimensions
-    cube->data->map.width = ft_strlen(cube->data->map.map[0]);
     cube->data->map.height = 0;
     while (cube->data->map.map[cube->data->map.height])
         cube->data->map.height++;
@@ -118,17 +117,15 @@ void    set_minimap_content(t_data *data)
         x = -1;
         while (++x < data->map.width)//data->map.x
         {
-            if (data->map.map[y][x] == '1')
+            if (data->map.map[y][x] == '1')//data->map.map[y][x]
                 put_minimap_pixel(data, x, y, 0x2f6299); //blue 
-            else if (data->map.map[y][x] == '0' || data->map.map[y][x] == 'S'  || data->map.map[y][x] == 'W' || data->map.map[y][x] == 'E' || data->map.map[y][x] == 'N')
+            else if ((data->map.map[y][x] == '0' || data->map.map[y][x] == 'S' || data->map.map[y][x] == 'W' || data->map.map[y][x] == 'E' || data->map.map[y][x] == 'N'))
                 put_minimap_pixel(data, x, y, 0xebb88f); //yellow
             else//background
-                put_minimap_pixel(data, x, y, 0x2f6299); //transsparent//(fully transparent white)
+                put_minimap_pixel(data, x, y, 0x002f6299); //transsparent//(fully transparent white)
         }
     }
-    
 }
-
 
 //put pixel color
 void put_minimap_pixel(t_data *data, int map_x, int map_y, int color)
@@ -203,28 +200,17 @@ int	minimap(t_cube *cube)
         return (1);
     // cube->data->map.map = cube->map;
     // Make sure map dimensions are properly set
-    cube->data->map.width = ft_strlen(cube->data->map.map[0]);
-    cube->data->map.height = 0;
     while (cube->data->map.map[cube->data->map.height])
         cube->data->map.height++;
-        
+
     set_minimap_content(cube->data);
     set_player_on_minimap(cube->data);
-    //set player fov(TBD)
     	// mlx_put_image_to_window(cube->mlx, cube->mlx_win,
         // cube->data->mini_img.img,
         // cube->data->minimap.offset_x, 
         // cube->data->minimap.offset_y);
     return (0);
 }
-
-
-// //set player_fov
-// int set_player_fov(x, y, )
-// {
-
-// }
-
 
 //CLEANUP MINIMAP
 // Free the minimap image (main rendering image)
@@ -245,7 +231,7 @@ void	cleanup_minimap(t_cube *cube)
     // }
 
     //SHOULD PROB ONLY NEED THIS
-    if (cube->data->mini_img.img)
+    if (cube->data->mini_img.img != NULL)
     {
         mlx_destroy_image(cube->mlx, cube->data->mini_img.img);
         cube->data->mini_img.img = NULL;

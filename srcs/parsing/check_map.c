@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:01:49 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/27 12:07:46 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/14 19:05:58 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	count_players(char **map, char c)
 	count = 0;
 	while (map[i])
 	{
+		printf("%s\n", map[i]);
 		j = 0;
 		while (map[i][j])
 		{
@@ -92,9 +93,12 @@ void	get_player_pos(char **map, t_data *data)
 	int	j;
 
 	i = 0;
+	int len;
+	len = 0;
 	while (map[i])
 	{
 		j = 0;
+		len = ft_strlen(map[i]);
 		while (map[i][j])
 		{
 			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E'
@@ -108,7 +112,10 @@ void	get_player_pos(char **map, t_data *data)
 			j++;
 		}
 		i++;
+		if (ft_strlen(map[i]) > len)
+			data->map.width = ft_strlen(map[i]);
 	}
+	
 }
 
 int	check_map(t_cube *cube)

@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:15:09 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/13 21:56:54 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/14 18:54:52 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ void	stock_map(char *str, t_cube *cube, int count_nl)
 			i++;
 		}
 	}
-	cube->data->map.width = max_width;//added for mini//store width
+	// cube->data->map.width = max_width;//added for mini//store width
+	// printf("%d\n", max_width);
 	cube->data->map.height = count_nl;//added for mini//store height
 	// printf("🎃cube->data->map.height: %d\n",cube->data->map.height);//DEBUG
 	// printf("🎃cube->data->map.width: %d\n", cube->data->map.width);//DEBUG
