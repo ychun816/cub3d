@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/13 22:15:16 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/15 16:39:33 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,6 @@ typedef struct s_vec
 	double	x;
 	double	y;
 	int		direction;
-	//double dir_x? //Directional X component (for ray direction or movement)
-	//double dir_y? //Directional Y component (for ray direction or movement)
 }			t_vec;
 
 typedef struct s_map
@@ -111,7 +109,6 @@ typedef struct s_img
 }			t_img;
 
 //// MINIMAP ////
-//handle size,scale,x and y pos 
 typedef struct s_minimap
 {
 	//If the map is larger, scale becomes smaller (each tile shrinks). If the map is small, scale remains large.
@@ -238,22 +235,20 @@ int			valid_elements(char c);
 int			cleanup(t_cube *cube, int exit_code);
 void		free_tab(char **tab);
 
-
 //// MINIMAP ////
 //init
 int		minimap(t_cube *cube);
 void	init_minimap(t_cube *cube);
-// void	init_minimap(t_data *data);
 int	init_minimap_mlx(t_cube *cube);
 
 //put color, texture
 void    set_minimap_content(t_data *data);
 void	put_minimap_pixel(t_data *data, int map_x, int map_y, int color);//fill pixel for each unit
-void put_minimap_frame(t_data *data);
-void	cleanup_minimap(t_cube *cube);
 
 //player pos
 void    set_player_on_minimap(t_data *data);
-// int set_player_fov(x, y);
+
+//cleanup
+void	cleanup_minimap(t_cube *cube);
 
 #endif
