@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:29:45 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/13 21:34:32 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/15 20:52:43 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,14 @@ void	init_data(t_data *data)
 	data->c_line = NULL;
 	data->xpm_height = 64;
 	data->xpm_width = 64;
+	// data->mini_img = NULL;//trying?
 }
 
 void	init_struct(t_cube *cube, t_data *data, t_img *img)
 {
 	init_cube(cube, data, img);
 	init_data(data);
-	// init_minimap(data);//added for mini
+	//mini
+	// data->map.width = 0;//do i need init here?mmmm
+	// data->map.height = 0;//do i need init here?
 }

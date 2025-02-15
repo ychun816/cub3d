@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:31:32 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/14 19:41:58 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/15 20:58:55 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,15 @@ int	cleanup(t_cube *cube, int exit_code)
 	if (cube->map)
 		free_tab(cube->map);
 	if (cube->data)
+	{
+		cleanup_minimap(cube);//added for mini//// Free minimap **before** freeing cube->data
 		free_data(cube->data);
+	}
 	destroy_sprites(cube);
 	if (cube->mlx)
 	{
 		cleanup_mlx(cube);
-		cleanup_minimap(cube);//added for mini
+		// cleanup_minimap(cube);//added for mini
 	}
 	exit(exit_code);
 }

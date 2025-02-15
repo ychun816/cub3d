@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:59:37 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/15 20:22:12 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/15 20:56:31 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void    set_minimap_content(t_data *data)
     y = -1;
     while (++y < data->map.height)
     {
+        if (!data->map.map[y])// Ensure row exists// Handle missing row
+            return;
         x = -1;
         while (++x < data->map.width)
         {
@@ -158,20 +160,15 @@ void    set_player_on_minimap(t_data *data)
     }
 }
 
-/** MAIN MINIMAP
- * 
- * 
-*/
+/** MAIN MINIMAP*/
 int	minimap(t_cube *cube)
 {
-    if (!cube->data || !cube->data->map.map || !cube->data->mini_img.img)
     // if (!cube->data)// || other condition?
+    if (!cube->data || !cube->data->map.map || !cube->data->mini_img.img)
         return (1);
-
     // Make sure map dimensions are properly set
     // while (cube->data->map.map[cube->data->map.height])
     //     cube->data->map.height++;
-
     set_minimap_content(cube->data);
     set_player_on_minimap(cube->data);
     return (0);
@@ -184,9 +181,11 @@ int	minimap(t_cube *cube)
 //img, just in case
 */
 void	cleanup_minimap(t_cube *cube)
-{
+{    
+    if (!cube || !cube->data) // Ensure cube and data exist
+        return;
     //SHOULD PROB ONLY NEED THIS
-    if (cube->data->mini_img.img != NULL)
+    if (cube->data && cube->data->mini_img.img)
     {
         mlx_destroy_image(cube->mlx, cube->data->mini_img.img);
         cube->data->mini_img.img = NULL;

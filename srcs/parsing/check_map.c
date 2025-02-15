@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:01:49 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/14 19:05:58 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/15 20:26:16 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	count_players(char **map, char c)
 	count = 0;
 	while (map[i])
 	{
-		printf("%s\n", map[i]);
+		// printf("%s\n", map[i]);//DEBUG
 		j = 0;
 		while (map[i][j])
 		{
