@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/15 16:39:33 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/15 20:22:44 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,14 +111,11 @@ typedef struct s_img
 //// MINIMAP ////
 typedef struct s_minimap
 {
-	//If the map is larger, scale becomes smaller (each tile shrinks). If the map is small, scale remains large.
 	double	scale;//The size of each map tile in pixels on the minimap.// Scale factor (1 map unit = X pixels)
 	int	mn_width;//in pixels
 	int	mn_height;//in pixels
 	int	offset_y;
 	int	offset_x;
-	// int		screen_x; //MAYBE NEED?
-	// int		screen_y; //MAYBE NEED?
 }	t_minimap;
 
 typedef struct s_cube

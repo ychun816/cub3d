@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/14 16:49:03 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/15 20:23:18 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,11 @@ int	input(int keysim, t_cube *cube)
 
 void	game_start(t_cube *cube)
 {
-	    // Initialize minimap once at startup
+	// Initialize minimap once at startup
     if (!cube || !cube->data)
         return;
-        
     // Ensure map is properly copied
-    cube->data->map.map = cube->map;  // Make sure this is a proper deep copy if needed
-	
+    cube->data->map.map = cube->map;
 	init_minimap(cube);//mini
 	if (init_minimap_mlx(cube))//mini
 		return ;
