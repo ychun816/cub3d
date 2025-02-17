@@ -1,16 +1,4 @@
 # **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: yilin <yilin@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/12 14:25:13 by ahadj-ar          #+#    #+#              #
-#    Updated: 2025/02/10 17:55:06 by yilin            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# **************************************************************************** #
 #                                 VARIABLES                                    #
 # **************************************************************************** #
 
@@ -48,20 +36,27 @@ MLX		= $(MLX_DIR)/libmlx.a
 INCLUDE = -I$(MLX_DIR)
 LIB	    = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
 
+# Silence all commands in Makefile
+MAKEFLAGS += --silent
+
 # **************************************************************************** #
-#                                 RULES                                        #
+#            Rules                                                             #
 # **************************************************************************** #
 
 all : $(NAME)
 
 $(NAME) : $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIB) $(INCLUDE) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIB) $(INCLUDE) -o $(NAME)
+	@echo "$(BABEBLUEB)╔═════════════════════════════════════════╗$(RESET)"
+	@$(TYP_EFF)
+	@$(EMOJI_EFF)
+	@echo "$(BABEBLUEB)╚═════════════════════════════════════════╝$(RESET)"
 
 $(MLX) :
 	@if [ ! -d "$(MLX_DIR)" ]; then \
 		git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR); \
 	fi
-	make -C $(MLX_DIR)
+	make -s -C $(MLX_DIR)
 
 clean:
 		rm -f $(OBJS)
@@ -79,7 +74,7 @@ re: fclean all
 .PHONY : all clean fclean re bonus
 
 # **************************************************************************** #
-#                              COLOR SETTING                                   #
+#                       COLORS & SOME FANCY THINGY                             #
 # **************************************************************************** #
 
 COLOR_RESET = \033[0m
@@ -98,3 +93,27 @@ GREEN_BBG = \033[1;42m
 BLUE_BBG = \033[1;44m
 YELLOW_BBG = \033[1;43m
 ORANGE_BBG = \033[1;48;5;214m
+
+### Typing effect animation ###
+define TYP_EFF
+	@echo -n "$(BABEBLUEB)║         $(RESET)"
+	@for char in C o m p i l i n g \  . . . ; do \
+		printf "%s" "$$char"; \
+		sleep 0.1; \
+	done
+	@echo -n "$(BABEBLUEB)                   ║$(RESET)"
+endef
+
+### Exploding dots effect animation ###
+define EMOJI_EFF
+    @for i in '🌍' '🌎' '🌏' '🌍' '🌎' '🌏' '🌍' '🌎' '🌏'; do \
+		printf "\r$(BABEBLUEB)║                $$i                       ║$(RESET)"; \
+		sleep 0.2; \
+	done
+    @printf "\r$(BABEBLUEB)║    $(NAME) 🫵 created successfully!!!      ║\n$(RESET)"
+endef
+	# @for i in '🖐🏻' '✋🏻' '🖖🏻' '🖐🏻' '✋🏻' '🖖🏻' '🖐🏻' '✋🏻' '🖖🏻'; do \
+    # @for i in '🌍' '🌎' '🌏' '🌍' '🌎' '🌏' '🌍' '🌎' '🌏'; do \
+    # @for i in '⛄' '☃️ ' '⛄' '☃️ '  '⛄' '☃️ '  '⛄' '☃️ ' ; do \
+    #   @for i in '🌑' '🌒' '🌓' '🌔' '🌕' '🌖'  '🌗' '🌘'; do \
+    # @for i in '🍛' '🥟' '🍕' '🍜' '🍙' '🦀' '🌯' '🍲'; do \
