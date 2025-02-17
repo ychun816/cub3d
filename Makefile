@@ -67,6 +67,7 @@ clean:
 fclean: clean
 		rm -rf $(MLX_DIR)
 		rm -f $(NAME)
+		@echo "$(BLUE_BBG) $(MLX_DIR) and $(NAME) ALL REMOVED!!$(RESET)"
 
 re: fclean all
 
