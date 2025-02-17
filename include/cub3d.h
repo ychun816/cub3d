@@ -248,4 +248,7 @@ void    set_player_on_minimap(t_data *data);
 //cleanup
 void	cleanup_minimap(t_cube *cube);
 
+//mouse move
+int	mouse_move(int x, int y, t_cube *cube);
+
 #endif

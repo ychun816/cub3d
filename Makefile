@@ -19,10 +19,11 @@ FILES   = srcs/main.c \
           srcs/parsing/floodfill.c \
           srcs/display/display.c \
           srcs/display/walls.c \
-          srcs/display/minimap.c \
           srcs/display/moves.c \
           srcs/display/rotate.c \
           srcs/display/display_tools.c \
+          srcs/bonus/minimap.c \
+          srcs/bonus/mouse.c \
           srcs/tools/ft_strdup.c \
           srcs/tools/ft_split.c \
           srcs/tools/tools_1.c \
@@ -67,7 +68,7 @@ clean:
 fclean: clean
 		rm -rf $(MLX_DIR)
 		rm -f $(NAME)
-		@echo "$(BLUE_BBG) $(MLX_DIR) and $(NAME) ALL REMOVED!!$(RESET)"
+		@echo "$(BLUE_BBG) $(MLX_DIR) and $(NAME) ALL REMOVED!$(RESET)"
 
 re: fclean all
 
