@@ -32,3 +32,5 @@ int mouse_move(int x, int y, t_cube *cube)
     mlx_mouse_move(cube->mlx, cube->mlx_win, W_WIDTH / 2, W_HEIGHT / 2);
     return (0);
 }
+
+//OKKK I NEED TO TEST THISS TOMORRROWWW
