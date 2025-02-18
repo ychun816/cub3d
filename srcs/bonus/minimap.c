@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:59:37 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/15 20:56:31 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/18 17:23:37 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
  * - set scale (2 pixel per tile ensure visuality)
  * - set width/heigth-> big map x/y * scale
 */
+
 void init_minimap(t_cube *cube)
 {
     int max_dimension;
@@ -87,7 +88,11 @@ void    set_minimap_content(t_data *data)
         x = -1;
         while (++x < data->map.width)
         {
-            if (data->map.map[y][x] == '1')
+            // printf("X -> %d | map.width -> %d | len [y] -> %lu\n", x, data->map.width, strlen(data->map.map[y]));
+            // printf("map[%d][%d] = %d\n", y, x, data->map.map[y][x]);
+            if (x > (int)strlen(data->map.map[y]))
+                put_minimap_pixel(data, x, y, 0x2f6299); //blue 
+            else if (data->map.map[y][x] == '1')
                 put_minimap_pixel(data, x, y, 0x2f6299); //blue 
             else if ((data->map.map[y][x] == '0' || data->map.map[y][x] == 'S' || data->map.map[y][x] == 'W' || data->map.map[y][x] == 'E' || data->map.map[y][x] == 'N'))
                 put_minimap_pixel(data, x, y, 0xebb88f); //yellow

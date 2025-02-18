@@ -22,15 +22,15 @@ FILES   = srcs/main.c \
           srcs/display/moves.c \
           srcs/display/rotate.c \
           srcs/display/display_tools.c \
-          srcs/bonus/minimap.c \
-          srcs/bonus/mouse.c \
           srcs/tools/ft_strdup.c \
           srcs/tools/ft_split.c \
           srcs/tools/tools_1.c \
           srcs/tools/tools_2.c \
           srcs/tools/tools_3.c \
-          srcs/cleanup.c
-		  
+          srcs/cleanup.c \
+          srcs/bonus/minimap.c \
+          srcs/bonus/mouse.c \
+
 OBJS	= $(FILES:.c=.o)
 MLX_DIR	= ./mlx
 MLX		= $(MLX_DIR)/libmlx.a
@@ -112,7 +112,7 @@ define EMOJI_EFF
 		printf "\r$(BABEBLUEB)║                $$i                       ║$(RESET)"; \
 		sleep 0.2; \
 	done
-    @printf "\r$(BABEBLUEB)║    $(NAME) 🫵 created successfully!!!      ║\n$(RESET)"
+    @printf "\r$(BABEBLUEB)║    $(NAME) 🫵 created successfully!!!     ║\n$(RESET)"
 endef
 	# @for i in '🖐🏻' '✋🏻' '🖖🏻' '🖐🏻' '✋🏻' '🖖🏻' '🖐🏻' '✋🏻' '🖖🏻'; do \
     # @for i in '🌍' '🌎' '🌏' '🌍' '🌎' '🌏' '🌍' '🌎' '🌏'; do \

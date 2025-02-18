@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/15 20:22:44 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/18 16:03:00 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@
 # define KEY_RIGHT 124
 
 # define MOVE_SPEED 0.1
-# define ROTATE_SPEED 0.1
+# define ROTATE_SPEED 0.08
 
 //// MINIMAP ////
-# define MINIMAP_SIZE 300 // The max width/height of the minimap in pixels
+# define MINIMAP_SIZE 350 // The max width/height of the minimap in pixels
 
 
 /******************************************************************************#
@@ -148,6 +148,7 @@ typedef struct s_data
 	t_vec	cam_plane;
 	t_vec	ray_dir;
 	t_map	map;
+	// t_cube	*cube;//added to try for mouse
 	t_img	mini_img;//added for mini
 	t_minimap minimap;//added for mini
 }			t_data;
@@ -249,6 +250,6 @@ void    set_player_on_minimap(t_data *data);
 void	cleanup_minimap(t_cube *cube);
 
 //mouse move
-int	mouse_move(int x, int y, t_cube *cube);
+int	mouse_move(int x, int y, void *arg);
 
 #endif

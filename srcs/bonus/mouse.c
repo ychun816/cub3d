@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.c                                          :+:      :+:    :+:   */
+/*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:59:37 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/15 20:56:31 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/18 16:08:02 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 - @note 
 - -> need to reset to center -> standard game move control & prevent mouse moving to edge!!!
 */
-int mouse_move(int x, int y, t_cube *cube)
+int mouse_move(int x, int y, void *arg)
 {
+    t_cube  *cube = (t_cube *)arg;
+    // printf("mouse move cube: %p\n", cube);
     if (x == W_WIDTH / 2 && y == W_HEIGHT / 2)
         return (0);
     //left
@@ -32,5 +34,3 @@ int mouse_move(int x, int y, t_cube *cube)
     mlx_mouse_move(cube->mlx, cube->mlx_win, W_WIDTH / 2, W_HEIGHT / 2);
     return (0);
 }
-
-//OKKK I NEED TO TEST THISS TOMORRROWWW
