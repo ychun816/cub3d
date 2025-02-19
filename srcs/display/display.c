@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:23 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/15 20:23:41 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/19 17:37:29 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ int	ray_dda(t_vec *side_dist, t_vec *delta_dist, t_vec *step, t_map *map)
 	}
 }
 
-// calculate the distance from the playter to the nearest wall that the ray will touch
+// calculate the distance from the playter to the nearest wall,
+// that the ray will touch
 // use DDA algo to step through the grid of the map until a wall "1" is hit
 
 double	ray_distance(t_cube *cube, t_data *data, t_vec *ray_dir, int *side)
@@ -94,7 +95,7 @@ double	ray_distance(t_cube *cube, t_data *data, t_vec *ray_dir, int *side)
 	return (perp_cast_distance);
 }
 
-// start of the casting, casts rays in columns 
+// start of the casting, casts rays in columns
 // from left to right and get the walls heights
 
 int	display(t_cube *cube)
@@ -117,13 +118,10 @@ int	display(t_cube *cube)
 		ray_len = ray_distance(cube, data, &data->ray_dir, &cast.side);
 		walls(cube, &cast, ray_len);
 	}
-	if (minimap(cube))//added for minimap
+	if (minimap(cube))
 		return (1);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img->img, 0, 0);
-	//mini
-	mlx_put_image_to_window(cube->mlx, cube->mlx_win,
-        cube->data->mini_img.img,
-        cube->data->minimap.offset_x, 
-        cube->data->minimap.offset_y);
+	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->data->mini_img.img,
+		cube->data->minimap.offset_x, cube->data->minimap.offset_y);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:01:49 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/19 16:32:44 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/19 17:38:20 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	count_players(char **map, char c)
 	count = 0;
 	while (map[i])
 	{
-		// printf("%s\n", map[i]);//DEBUG
 		j = 0;
 		while (map[i][j])
 		{
@@ -91,9 +90,9 @@ void	get_player_pos(char **map, t_data *data)
 {
 	int	i;
 	int	j;
+	int	len;
 
 	i = 0;
-	int len;
 	len = 0;
 	while (map[i])
 	{
@@ -112,12 +111,8 @@ void	get_player_pos(char **map, t_data *data)
 			j++;
 		}
 		i++;
-		if (ft_strlen(map[i]) > len)
-			data->map.width = ft_strlen(map[i]);
-		else
-			data->map.width = len;
+		get_minimap_width(map, len, i, data);
 	}
-	
 }
 
 int	check_map(t_cube *cube)

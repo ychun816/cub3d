@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/19 16:58:07 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/19 17:44:02 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@
 //// MINIMAP ////
 # define MINIMAP_SIZE 350
 
-/******************************************************************************#
-#                                 STRUCS                                       #
-# *****************************************************************************/
+/*********************************************#
+#                   STRUCS                    #
+# ********************************************/
 
 typedef struct s_vec		t_vec;
 typedef struct s_map		t_map;
@@ -85,11 +85,11 @@ typedef struct s_vec
 
 typedef struct s_map
 {
-	int x;
-	int y;
-	char **map; 
-	int width;
-	int height;
+	int						x;
+	int						y;
+	char					**map;
+	int						width;
+	int						height;
 }							t_map;
 
 typedef struct s_img
@@ -102,18 +102,17 @@ typedef struct s_img
 	int						*south;
 	int						*west;
 	int						*east;
-	int bpp;         // bits per pixel (color depth)
-	int line_length; // bytes per row
-	int endian;      // byte order
+	int						bpp;
+	int						line_length;
+	int						endian;
 }							t_img;
 
 //// MINIMAP ////
 typedef struct s_minimap
 {
-	double scale; 
-		// The size of each map tile in pixels on the minimap.// Scale factor (1 map unit = X pixels)
-	int mn_width;  // in pixels
-	int mn_height; // in pixels
+	double					scale;
+	int						mn_width;
+	int						mn_height;
 	int						offset_y;
 	int						offset_x;
 }							t_minimap;
@@ -148,9 +147,8 @@ typedef struct s_data
 	t_vec					cam_plane;
 	t_vec					ray_dir;
 	t_map					map;
-	// t_cube	*cube;//added to try for mouse
-	t_img mini_img;    // added for mini
-	t_minimap minimap; // added for mini
+	t_img					mini_img;
+	t_minimap				minimap;
 }							t_data;
 
 typedef struct s_cast
@@ -168,9 +166,9 @@ typedef struct s_cast
 	double					text_pos;
 }							t_cast;
 
-/******************************************************************************#
-#                                 FUNCS                                        #
-# *****************************************************************************/
+/*********************************************#
+#                    FUNCS                    #
+# ********************************************/
 
 // PARSING
 
@@ -239,11 +237,13 @@ void						free_tab(char **tab);
 int							minimap(t_cube *cube);
 void						init_minimap(t_cube *cube);
 int							init_minimap_mlx(t_cube *cube);
+void						get_minimap_width(char **map, int len, int i,
+								t_data *data);
 
 // put color, texture
 void						set_minimap_content(t_data *data);
-void	put_minimap_pixel(t_data *data, int map_x, int map_y, int color);
-		// fill pixel for each unit
+void						put_minimap_pixel(t_data *data, int map_x,
+								int map_y, int color);
 
 // player pos
 void						set_player_on_minimap(t_data *data);

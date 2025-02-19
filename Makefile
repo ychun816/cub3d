@@ -30,6 +30,7 @@ FILES   = srcs/main.c \
           srcs/cleanup.c \
           srcs/bonus/minimap.c \
           srcs/bonus/mouse.c \
+          srcs/bonus/minimap_tool.c
 
 OBJS	= $(FILES:.c=.o)
 MLX_DIR	= ./mlx

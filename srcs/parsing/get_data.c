@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:33:11 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/01/31 18:16:32 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/19 17:25:15 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	get_textures(t_cube *cube)
 	}
 }
 
+//IT SHOULD BE OK EVEN IF THERE IS SPACE AFTER THE .XPM
 void	get_data(t_cube *cube)
 {
 	get_textures(cube);
@@ -87,8 +88,6 @@ void	get_data(t_cube *cube)
 		printf("Incorrect XPM or RGB values\n");
 		cleanup(cube, 1);
 	}
-
-	//IT SHOULD BE OK EVEN IF THERE IS SPACE AFTER THE .XPM
 	cube->data->no_img = trim_textures(cube->data->no_img);
 	cube->data->so_img = trim_textures(cube->data->so_img);
 	cube->data->we_img = trim_textures(cube->data->we_img);

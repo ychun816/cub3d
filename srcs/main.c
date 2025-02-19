@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/19 16:23:22 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/19 17:23:26 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,13 @@ int	input(int keysim, t_cube *cube)
 
 void	game_start(t_cube *cube)
 {
-// printf("GAME START cube: %p\n", cube);
-	// Initialize minimap once at startup
-	// Ensure map is properly copied
-    if (!cube || !cube->data)
-        return;
-    cube->data->map.map = cube->map;
-	// printf("height => %d | width => %d\n",cube->data->map.height, cube->data->map.width );
-	init_minimap(cube);//mini
-	if (init_minimap_mlx(cube))//mini
+	if (!cube || !cube->data)
 		return ;
-
+	cube->data->map.map = cube->map;
+	init_minimap(cube);
+	if (init_minimap_mlx(cube))
+		return ;
 	mlx_loop_hook(cube->mlx, display, cube);
-	// mlx_loop_hook(cube->mlx, minimap, cube);// put chun minimap in a hook // MAYBE NOT ????
 	mlx_mouse_move(cube->mlx, cube->mlx_win, W_WIDTH / 2, W_HEIGHT / 2);
 	mlx_hook(cube->mlx_win, KeyPress, KeyPressMask, &input, cube);
 	mlx_hook(cube->mlx_win, MotionNotify, PointerMotionMask, &mouse_move, cube);
@@ -71,7 +65,6 @@ int	main(int ac, char **av)
 		if (parsing(av, &cube))
 			cleanup(&cube, 1);
 		init_mlx(&cube);
-		// printf("MAIN cube: %p\n", &cube);
 		game_start(&cube);
 	}
 	cleanup(&cube, 0);

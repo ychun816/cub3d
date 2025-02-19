@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floodfill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:38:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/25 18:03:23 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:24:29 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	floodfill(char **map, int x, int y)
 		return (0);
 	if (map[y][x] == '0')
 		map[y][x] = 'X';
-	// print_tab(map);
-	// printf("\n\n\n");
 	if ((map[y][x + 1] && floodfill(map, x + 1, y) == 0) && (map[y][x - 1]
 			&& floodfill(map, x - 1, y) == 0) && (map[y + 1][x]
 			&& floodfill(map, x, y + 1) == 0) && (map[y - 1][x]
