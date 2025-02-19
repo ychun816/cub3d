@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:59:37 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/19 17:42:52 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/19 19:29:46 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	set_minimap_content(t_data *data)
 					|| data->map.map[y][x] == 'N'))
 				put_minimap_pixel(data, x, y, 0xebb88f);
 			else
-				put_minimap_pixel(data, x, y, 0x002f6299);
+				put_minimap_pixel(data, x, y, 0x2f6299);
 		}
 	}
 }
