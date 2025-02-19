@@ -6,7 +6,7 @@
 /*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:01:49 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/15 20:26:16 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/19 16:32:44 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ void	get_player_pos(char **map, t_data *data)
 		i++;
 		if (ft_strlen(map[i]) > len)
 			data->map.width = ft_strlen(map[i]);
+		else
+			data->map.width = len;
 	}
 	
 }
