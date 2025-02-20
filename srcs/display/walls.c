@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:07:14 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/10 17:02:29 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:46:50 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,27 @@ void	get_color(t_cast *cast, t_cube *cube, int *color, int tex_y)
 		*color = cube->img->east[tex_y * cube->data->xpm_width + cast->text_x];
 }
 
+int	apply_lighting(int color, double distance)
+{
+	int		r;
+	int		g;
+	int		b;
+	double	intensity;
+	double	max_distance;
+
+	max_distance = 10.0;
+	intensity = 1.0 - (distance / max_distance);
+	if (intensity < 0.1)
+		intensity = 0.1;
+	r = ((color >> 16) & 0xFF) * intensity;
+	g = ((color >> 8) & 0xFF) * intensity;
+	b = (color & 0xFF) * intensity;
+	return (((r & 0xFF) << 16) | ((g & 0xFF) << 8) | (b & 0xFF));
+}
+
 // render a single vertical line for the 3D view
 
-void	display_vertical_line(t_cube *cube, int x, t_cast *cast)
+void	display_vertical_line(t_cube *cube, int x, t_cast *cast, double ray_len)
 {
 	int	color;
 	int	tex_y;
@@ -40,14 +58,25 @@ void	display_vertical_line(t_cube *cube, int x, t_cast *cast)
 	while (y < W_HEIGHT)
 	{
 		if (y < cast->draw_start)
+		{
+			// cube->f_value = apply_lighting(cube->f_value, ray_len);
 			ft_pixel_put(cube->img, x, y, cube->f_value);
+			// void * bg = mlx_xpm_file_to_image(cube->mlx, cube->data->no_img, &width, &height);//
+			// cube->img->north = (int *)mlx_get_data_addr(cube->no_xpm, &cube->img->bpp, &cube->img->line_length, &cube->img->endian);//
+		}	
 		else if (y > cast->draw_end)
+		{
+			// cube->c_value = apply_lighting(cube->c_value, ray_len);
 			ft_pixel_put(cube->img, x, y, cube->c_value);
+			//cube->no_xpm = mlx_xpm_file_to_image(cube->mlx, cube->data->no_img, &width, &height);//
+			//cube->img->north = (int *)mlx_get_data_addr(cube->no_xpm, &cube->img->bpp, &cube->img->line_length, &cube->img->endian);//
+		}
 		else
 		{
 			tex_y = (int)cast->text_pos;
 			tex_y = tex_y & (cube->data->xpm_height - 1);
 			get_color(cast, cube, &color, tex_y);
+			color = apply_lighting(color, ray_len);
 			ft_pixel_put(cube->img, x, y, color);
 			cast->text_pos += cast->step;
 		}
@@ -124,5 +153,5 @@ void	walls(t_cube *cube, t_cast *cast, double ray_len)
 			* cast->step);
 	choose_textures(cast, cube);
 	x = cast->x;
-	display_vertical_line(cube, x, cast);
+	display_vertical_line(cube, x, cast, ray_len);
 }

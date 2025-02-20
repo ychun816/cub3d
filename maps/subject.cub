@@ -1,10 +1,10 @@
-NO      ./sprites/greystone.xpm
-SO    ./sprites/colorstone.xpm
-WE ./sprites/wood.xpm
-EA              ./sprites/redbrick.xpm
+NO      ./sprites/wall_lvl0.xpm
+SO    ./sprites/wall_lvl1.xpm
+WE ./sprites/wall_lvl2.xpm
+EA              ./sprites/wall_lvl3.xpm
 
-F 105,105,105
-C 105,255,255
+F 125,107,87
+C 6,22,39
 
         11111111111111111111111111
         100000000011000000000000001
