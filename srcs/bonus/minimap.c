@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:59:37 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/20 17:48:15 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/20 20:44:26 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ void	set_player_on_minimap(t_data *data)
 /** MAIN MINIMAP*/
 int	minimap(t_cube *cube)
 {
-	// mlx_clear_window(cube->mlx, cube->mlx_win); 	
 	if (!cube->data || !cube->data->map.map || !cube->data->mini_img.img)
 		return (1);
 	set_minimap_content(cube->data);

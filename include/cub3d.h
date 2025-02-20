@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/20 17:49:22 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/20 20:44:14 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,7 @@ int							display(t_cube *cube);
 int							input(int keysim, t_cube *cube);
 void						walls(t_cube *cube, t_cast *cast, double ray_len);
 void						ft_pixel_put(t_img *pixel, int x, int y, int color);
+int							apply_lighting(int color, double distance);
 
 // MOVEMENTS
 void						rotate_left(t_data *data);
