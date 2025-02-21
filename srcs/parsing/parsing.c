@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:28:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/11 16:23:09 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/21 17:39:40 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	check_extension(char *av)
 	i = 0;
 	while (av[i])
 		i++;
-	if (av[i - 1] != 'b' && av[i - 2] != 'u' && av[i - 3] != 'c')
-		return (1);
-	return (0);
+	if (av[i - 1] == 'b' && av[i - 2] == 'u' && av[i - 3] == 'c')
+		return (0);
+	return (1);
 }
 
 char	**trim_map(char **map)
@@ -39,7 +39,7 @@ char	**trim_map(char **map)
 			break ;
 	}
 	if (tmp[i] == NULL)
-		return (NULL);
+		return (free_tab(tmp), (NULL));
 	j = i;
 	while (tmp[j] && tmp[j][0] != '\0')
 		j++;
