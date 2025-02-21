@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/20 20:44:14 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/21 16:16:57 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@
 # define KEY_RIGHT 124
 
 # define MOVE_SPEED 0.1
-# define ROTATE_SPEED 0.01
+# define ROTATE_SPEED 0.05
+# define MOUSE_SPEED 0.01
 
 //// MINIMAP ////
 # define MINIMAP_SIZE 300
@@ -193,8 +194,8 @@ void						ft_pixel_put(t_img *pixel, int x, int y, int color);
 int							apply_lighting(int color, double distance);
 
 // MOVEMENTS
-void						rotate_left(t_data *data);
-void						rotate_right(t_data *data);
+void						rotate_left(t_data *data, double rotation_speed);
+void						rotate_right(t_data *data, double rotation_speed);
 void						move_forward(t_cube *cube, t_data *data);
 void						move_backward(t_cube *cube, t_data *data);
 void						move_left(t_cube *cube, t_data *data);

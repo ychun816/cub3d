@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/19 17:23:26 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/21 16:16:23 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	input(int keysim, t_cube *cube)
 	if (keysim == XK_d)
 		move_right(cube, cube->data);
 	if (keysim == XK_Left)
-		rotate_left(cube->data);
+		rotate_left(cube->data, ROTATE_SPEED);
 	if (keysim == XK_Right)
-		rotate_right(cube->data);
+		rotate_right(cube->data, ROTATE_SPEED);
 	if (keysim == XK_Escape)
 		return (cleanup(cube, 0), 0);
 	return (0);

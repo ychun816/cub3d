@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:59:37 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/19 17:15:24 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/21 16:15:58 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /** mose_move
 - no move if at center
-- y tronpi!! only check x -> rotate left/right
+- y tant pis!! only check x -> rotate left/right
 */
 int	mouse_move(int x, int y, void *arg)
 {
@@ -26,9 +26,9 @@ int	mouse_move(int x, int y, void *arg)
 	if (!s_x)
 		s_x = x;
 	if (x < s_x)
-		rotate_left(cube->data);
+		rotate_left(cube->data, MOUSE_SPEED);
 	if (x > s_x)
-		rotate_right(cube->data);
+		rotate_right(cube->data, MOUSE_SPEED);
 	s_x = x;
 	return (0);
 }
