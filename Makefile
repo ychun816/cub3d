@@ -2,7 +2,7 @@
 #                                 VARIABLES                                    #
 # **************************************************************************** #
 
-NAME	= cub3d
+NAME	= cub3D
 
 CC		= cc
 CFLAGS	= -g -Wall -Wextra -Werror

@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:28:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/26 18:24:22 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:43:44 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,30 @@ int	check_extension(char *av)
 	i = 0;
 	while (av[i])
 		i++;
-	if (av[i - 1] == 'b' && av[i - 2] == 'u' && av[i - 3] == 'c')
+	if (av[i - 1] == 'b' && av[i - 2] == 'u' && av[i - 3] == 'c'
+		&& av[i - 4] == '.' && av[i - 5] != '/')
 		return (0);
 	return (1);
+}
+
+char	*trim_textures(char *str)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = NULL;
+	while (str[i])
+	{
+		if (str[i] == '.')
+		{
+			tmp = ft_strndup_start(str, i);
+			break ;
+		}
+		i++;
+	}
+	free(str);
+	return (tmp);
 }
 
 char	**trim_map(char **map)
