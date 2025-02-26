@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:33:11 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/26 20:54:24 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/26 21:39:21 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,31 @@ void	copy_textures2(t_cube *cube, int i, int j)
 	if (cube->map[i][j] == 'E' && cube->map[i][j
 		+ 1] && cube->map[i][j + 1] == 'A')
 	{
-		if (!cube->data->ea_img)
-			cube->data->ea_img = ft_strdup(cube->map[i]);
-		else
+		if (cube->data->ea_img != NULL)
 			ko_data(cube);
+		cube->data->ea_img = ft_strdup(cube->map[i]);
+		return ;
 	}
 	else if (cube->map[i][j] == 'F')
 	{
-		if (!cube->data->f_line)
-			cube->data->f_line = ft_strdup(cube->map[i]);
-		else
+		if (cube->data->f_line)
 			ko_data(cube);
+		cube->data->f_line = ft_strdup(cube->map[i]);
+		return ;
 	}
 	else if (cube->map[i][j] == 'C')
 	{
-		if (!cube->data->c_line)
-			cube->data->c_line = ft_strdup(cube->map[i]);
-		else
+		if (cube->data->c_line)
 			ko_data(cube);
+		cube->data->c_line = ft_strdup(cube->map[i]);
+		return ;
+	}
+	else if (cube->map[i][j] && (cube->map[i][j] != ' ' || cube->map[i][j] != '\t' 
+		|| cube->map[i][j] != '\n' || cube->map[i][j] != '1' 
+		|| cube->map[i][j] != '0'))
+	{
+		printf("test === %s\n", cube->map[i]);
+		ko_data(cube);
 	}
 }
 
@@ -49,26 +56,26 @@ void	copy_textures(t_cube *cube, int i, int j)
 	if (cube->map[i][j] == 'N' && cube->map[i][j + 1]
 		&& cube->map[i][j + 1] == 'O')
 	{
-		if (!cube->data->no_img)
-			cube->data->no_img = ft_strdup(cube->map[i]);
-		else
+		if (cube->data->no_img != NULL)
 			ko_data(cube);
+		cube->data->no_img = ft_strdup(cube->map[i]);
+		return ;	
 	}
 	else if (cube->map[i][j] == 'S' && cube->map[i][j
 		+ 1] && cube->map[i][j + 1] == 'O')
 	{
-		if (!cube->data->so_img)
-			cube->data->so_img = ft_strdup(cube->map[i]);
-		else
+		if (cube->data->so_img != NULL)
 			ko_data(cube);
+		cube->data->so_img = ft_strdup(cube->map[i]);
+		return ;
 	}
 	else if (cube->map[i][j] == 'W' && cube->map[i][j
 		+ 1] && cube->map[i][j + 1] == 'E')
 	{
-		if (!cube->data->we_img)
-			cube->data->we_img = ft_strdup(cube->map[i]);
-		else
+		if (cube->data->we_img != NULL)
 			ko_data(cube);
+		cube->data->we_img = ft_strdup(cube->map[i]);
+		return ;
 	}
 	copy_textures2(cube, i, j);
 }
@@ -82,9 +89,9 @@ void	get_textures(t_cube *cube)
 	while (cube->map[i])
 	{
 		j = 0;
-		if (check_data(cube->data) == 0)
-			break ;
-		while (cube->map[i][j] && cube->map[i][j] == ' ')
+		// if (check_data(cube->data) == 0)
+		// 	break ;
+		while (cube->map[i][j] && (cube->map[i][j] == ' ' || cube->map[i][j] == '\t'))
 			j++;
 		copy_textures(cube, i, j);
 		i++;
