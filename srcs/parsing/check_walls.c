@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 17:33:15 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/14 17:44:49 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:14:56 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_lr_walls(char *wall, int direction)
 
 	if (direction == 1)
 	{
-		while (*wall == ' ')
+		while (*wall && *wall == ' ')
 			wall++;
 		if (*wall && *wall != '1')
 		{
@@ -49,9 +49,9 @@ int	check_lr_walls(char *wall, int direction)
 			return (0);
 	}
 	i = ft_strlen(wall) - 1;
-	while (wall[i] == ' ')
+	while (i >= 0 && wall[i] && wall[i] == ' ')
 		i--;
-	if (wall[i] && wall[i] != '1')
+	if (i >= 0 && wall[i] && wall[i] != '1')
 	{
 		ft_putstr_fd("East wall is incorrect\n", 2);
 		return (1);

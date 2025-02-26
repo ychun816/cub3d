@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:43:22 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2024/11/26 10:57:41 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:36:54 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	ft_atoi(const char *str)
 		res = res * 10 + (str[i] - '0');
 		i++;
 	}
-	if (res > 255 || res < 0)
+	if (res > 255 || res < 0 || ft_strlen((char *)str) > 3)
 		return (-1);
 	return (res * sign);
 }

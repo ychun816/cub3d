@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:28:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/21 17:39:40 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:24:22 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ char	**trim_map(char **map)
 	if (tmp[i] == NULL)
 		return (free_tab(tmp), (NULL));
 	j = i;
-	while (tmp[j] && tmp[j][0] != '\0')
+	while (tmp[j])
 		j++;
 	map = ft_calloc(sizeof(char *), (j - i) + 1);
+	if (!map)
+		return (free(map), (NULL));
 	j = -1;
-	while (tmp[i] && tmp[i][0] != '\0')
+	while (tmp[i])
 		map[++j] = ft_strdup(tmp[i++]);
 	free_tab(tmp);
 	return (map);
