@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:31:23 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/20 20:44:36 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/26 11:58:41 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ray_dda(t_vec *side_dist, t_vec *delta_dist, t_vec *step, t_map *map)
 	}
 }
 
-// calculate the distance from the playter to the nearest wall,
+// calculate the distance from the player to the nearest wall,
 // that the ray will touch
 // use DDA algo to step through the grid of the map until a wall "1" is hit
 
