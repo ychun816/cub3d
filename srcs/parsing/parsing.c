@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:28:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/26 20:43:44 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/28 13:52:03 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@ int	check_extension(char *av)
 	if (av[i - 1] == 'b' && av[i - 2] == 'u' && av[i - 3] == 'c'
 		&& av[i - 4] == '.' && av[i - 5] != '/')
 		return (0);
+	return (1);
+}
+
+int	check_valid_keys(char *str)
+{
+	if (str[0] == ' ' || str[0] == '\n' || str[0] == '\0' || str[0] == '1'
+		|| str[0] == '0' || !ft_strncmp(str, "NO", 2)
+		|| !ft_strncmp(str, "WE", 2) || !ft_strncmp(str, "SO", 2)
+		|| !ft_strncmp(str, "EA", 2) || !ft_strncmp(str, "C", 1)
+		|| !ft_strncmp(str, "F", 1))
+	{
+		return (0);
+	}
 	return (1);
 }
 

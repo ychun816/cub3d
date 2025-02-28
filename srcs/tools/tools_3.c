@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:06:30 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/01/31 18:30:37 by yilin            ###   ########.fr       */
+/*   Updated: 2025/02/28 13:34:16 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ char	**copy_tab(char **tab)
 		res[i] = ft_strdup(tab[i]);
 		i++;
 	}
+	res[i] = NULL;
 	return (res);
 }

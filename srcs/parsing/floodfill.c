@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:38:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/26 20:22:01 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/28 13:40:08 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	floodfill(char **map, int x, int y)
 {
-	if (x < 0 || x > ft_strlen(map[y]) || y < 0)
+	if (y > ft_tablen(map) || !map[y] || x < 0 || x > ft_strlen(map[y])
+		|| y < 0)
 		return (-1);
 	if (map[y][x] && map[y][x] == ' ')
 		return (-1);
@@ -22,10 +23,10 @@ int	floodfill(char **map, int x, int y)
 		return (0);
 	if (map[y][x] && map[y][x] == '0')
 		map[y][x] = 'X';
-	if ((map[y][x + 1] && floodfill(map, x + 1, y) == 0) && (map[y][x - 1]
-			&& floodfill(map, x - 1, y) == 0) && (map[y + 1][x]
-			&& floodfill(map, x, y + 1) == 0) && (map[y - 1][x]
-			&& floodfill(map, x, y - 1) == 0))
+	if ((map[y][x + 1] && map[y + 1] && floodfill(map, x + 1, y) == 0)
+			&& (map[y][x - 1] && floodfill(map, x - 1, y) == 0)
+			&& (map[y + 1][x] && floodfill(map, x, y + 1) == 0)
+			&& (map[y - 1][x] && floodfill(map, x, y - 1) == 0))
 		return (0);
 	else
 		return (-1);

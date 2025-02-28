@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:33:11 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/26 21:39:21 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/02/28 13:50:02 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,6 @@ void	copy_textures2(t_cube *cube, int i, int j)
 		cube->data->c_line = ft_strdup(cube->map[i]);
 		return ;
 	}
-	else if (cube->map[i][j] && (cube->map[i][j] != ' ' || cube->map[i][j] != '\t' 
-		|| cube->map[i][j] != '\n' || cube->map[i][j] != '1' 
-		|| cube->map[i][j] != '0'))
-	{
-		printf("test === %s\n", cube->map[i]);
-		ko_data(cube);
-	}
 }
 
 void	copy_textures(t_cube *cube, int i, int j)
@@ -59,7 +52,7 @@ void	copy_textures(t_cube *cube, int i, int j)
 		if (cube->data->no_img != NULL)
 			ko_data(cube);
 		cube->data->no_img = ft_strdup(cube->map[i]);
-		return ;	
+		return ;
 	}
 	else if (cube->map[i][j] == 'S' && cube->map[i][j
 		+ 1] && cube->map[i][j + 1] == 'O')
@@ -89,10 +82,11 @@ void	get_textures(t_cube *cube)
 	while (cube->map[i])
 	{
 		j = 0;
-		// if (check_data(cube->data) == 0)
-		// 	break ;
-		while (cube->map[i][j] && (cube->map[i][j] == ' ' || cube->map[i][j] == '\t'))
+		while (cube->map[i][j] && (cube->map[i][j] == ' '
+			|| cube->map[i][j] == '\t'))
 			j++;
+		if (check_valid_keys(cube->map[i]))
+			ko_data(cube);
 		copy_textures(cube, i, j);
 		i++;
 	}
