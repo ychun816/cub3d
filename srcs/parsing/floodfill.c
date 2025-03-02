@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:38:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/03/02 15:27:00 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/03/02 16:57:02 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	check_next_step(char **map, int y, int x)
 {
 	if ((map[y] && map[y][x + 1]) && (x != 0 && map[y][x - 1])
 		&& (map[y + 1] && map[y + 1][0] && x <= ft_strlen(map[y + 1]))
-		&& (y != 0 && map[y - 1][0]))
+		&& (y != 0 && x <= ft_strlen(map[y - 1]) && map[y - 1][0]))
 		return (0);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:28:46 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/28 13:52:03 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:21:38 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	check_extension(char *av)
 int	check_valid_keys(char *str)
 {
 	if (str[0] == ' ' || str[0] == '\n' || str[0] == '\0' || str[0] == '1'
-		|| str[0] == '0' || !ft_strncmp(str, "NO", 2)
-		|| !ft_strncmp(str, "WE", 2) || !ft_strncmp(str, "SO", 2)
-		|| !ft_strncmp(str, "EA", 2) || !ft_strncmp(str, "C", 1)
-		|| !ft_strncmp(str, "F", 1))
+		|| str[0] == '0' || !ft_strncmp(str, "NO ", 3)
+		|| !ft_strncmp(str, "WE ", 3) || !ft_strncmp(str, "SO ", 3)
+		|| !ft_strncmp(str, "EA ", 3) || !ft_strncmp(str, "C ", 2)
+		|| !ft_strncmp(str, "F ", 2))
 	{
 		return (0);
 	}
@@ -43,17 +43,12 @@ char	*trim_textures(char *str)
 	char	*tmp;
 	int		i;
 
-	i = 0;
+	i = 2;
 	tmp = NULL;
-	while (str[i])
-	{
-		if (str[i] == '.')
-		{
-			tmp = ft_strndup_start(str, i);
-			break ;
-		}
+	while (str[i] == ' ' || str[i] == '\t')
 		i++;
-	}
+	if (str[i] == '.')
+		tmp = ft_strndup_start(str, i);
 	free(str);
 	return (tmp);
 }

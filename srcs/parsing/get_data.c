@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:33:11 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/03/02 14:42:52 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:19:51 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,9 @@ void	get_data(t_cube *cube)
 	cube->f_value = get_rgb(cube->data->c_line);
 	if (cube->c_value == -1 || cube->f_value == -1)
 		cleanup(cube, 1);
+	if (check_data(cube->data))
+	{
+		printf("Incorrect XPM or RGB values\n");
+		cleanup(cube, 1);
+	}
 }
