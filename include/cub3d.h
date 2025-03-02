@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/03/02 14:40:36 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:58:06 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,6 @@ int							get_line_length(char *str, int i);
 int							get_rgb(char *color);
 void						get_data(t_cube *cube);
 int							check_map(t_cube *cube);
-int							check_walls(char **map);
 char						*trim_textures(char *str);
 int							check_data(t_data *data);
 int							check_valid_keys(char *str);

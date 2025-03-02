@@ -15,7 +15,6 @@ FILES   = srcs/main.c \
           srcs/parsing/get_data.c \
           srcs/parsing/get_rgb.c \
           srcs/parsing/check_map.c \
-          srcs/parsing/check_walls.c \
           srcs/parsing/floodfill.c \
           srcs/display/display.c \
           srcs/display/walls.c \

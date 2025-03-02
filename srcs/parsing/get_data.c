@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:33:11 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/28 13:50:02 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:42:52 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ko_data(t_cube *cube)
 {
-	printf("wrong elements in the map\n");
+	printf("wrong datas in the map\n");
 	cleanup(cube, 1);
 }
 

@@ -6,11 +6,20 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:30:00 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/26 18:37:51 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:57:03 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+int	check_data(t_data *data)
+{
+	if (data->c_line && data->f_line && data->we_img && data->ea_img
+		&& data->no_img && data->so_img)
+		return (0);
+	else
+		return (1);
+}
 
 int	count_commas(char *str)
 {
