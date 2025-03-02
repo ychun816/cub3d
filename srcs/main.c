@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yilin <yilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:26:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/21 16:16:23 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/03/02 16:31:04 by yilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,15 @@ void	game_start(t_cube *cube)
 	mlx_loop(cube->mlx);
 }
 
-int	main(int ac, char **av)
+int	main(int ac, char **av, char **envp)
 {
 	t_cube	cube;
 	t_data	data;
 	t_img	img;
 
 	data.mini_img.img = NULL;
+	if (!envp || !envp[0])
+		return (1);
 	if (ac != 2)
 	{
 		printf("Wrong arguments\n");
