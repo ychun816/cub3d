@@ -6,7 +6,7 @@
 /*   By: ahadj-ar <ahadj-ar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:24:25 by ahadj-ar          #+#    #+#             */
-/*   Updated: 2025/02/28 13:50:33 by ahadj-ar         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:40:36 by ahadj-ar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 
 # define MOVE_SPEED 0.1
 # define ROTATE_SPEED 0.05
-# define MOUSE_SPEED 0.01
+# define MOUSE_SPEED 0.02
 
 //// MINIMAP ////
 # define MINIMAP_SIZE 300
