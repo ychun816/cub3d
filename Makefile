@@ -45,6 +45,7 @@ MAKEFLAGS += --silent
 # **************************************************************************** #
 
 all : $(NAME)
+	$(show_hot_potes)
 
 $(NAME) : $(MLX) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIB) $(INCLUDE) -o $(NAME)
@@ -90,6 +91,9 @@ PURPLEB = \033[1;38;5;55m
 PSTL_YELLOWB = \033[1;38;2;255;253;208m
 PSTL_ORGB = \033[1;38;2;255;179;102m
 PSTL_PURPLEB =\033[1;38;2;204;153;255m
+ORANGE = \033[38;5;214m
+DARK_BLUE = \033[38;5;18m   # Dark Blue  
+DARK_RED = \033[38;5;88m  # Dark Red  
 
 GREEN_BBG = \033[1;42m
 BLUE_BBG = \033[1;44m
@@ -119,3 +123,16 @@ endef
     # @for i in '⛄' '☃️ ' '⛄' '☃️ '  '⛄' '☃️ '  '⛄' '☃️ ' ; do \
     #   @for i in '🌑' '🌒' '🌓' '🌔' '🌕' '🌖'  '🌗' '🌘'; do \
     # @for i in '🍛' '🥟' '🍕' '🍜' '🍙' '🦀' '🌯' '🍲'; do \
+
+### Print ascii art/txt ###
+define show_hot_potes
+	@echo "$(PSTL_ORGB)"
+	@cat hot_potes.txt
+	@echo "$(COLOR_RESET)"
+	@echo "$(DARK_BLUE)"
+	@cat ascii_art.txt
+	@echo "$(COLOR_RESET)"
+endef
+# @echo "$(PSTL_ORGB)"
+# @cat ascii_art_fire.txt
+# @echo "$(COLOR_RESET)"
