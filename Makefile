@@ -132,7 +132,7 @@ define show_hot_potes
 	@echo "$(DARK_BLUE)"
 	@cat ascii_art.txt
 	@echo "$(COLOR_RESET)"
+	@echo "$(PSTL_ORGB)"
+	@cat ascii_art_fire.txt
+	@echo "$(COLOR_RESET)"
 endef
-# @echo "$(PSTL_ORGB)"
-# @cat ascii_art_fire.txt
-# @echo "$(COLOR_RESET)"
