@@ -1,3 +1,4 @@
 # cub3D
 
-![image](https://github.com/user-attachments/assets/bdae0dfc-3c6e-4825-9341-53e2c97d363d)
+![Screenshot from 2025-03-03 16-49-56](https://github.com/user-attachments/assets/7f93d294-f7b4-4b83-95fa-a13d51278f86)
+
